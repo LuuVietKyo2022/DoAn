@@ -1,0 +1,45 @@
+
+.element-change{
+    color: black;
+    background-color: #fff;
+}
+
+.icons-header{
+   font-size: 30px;
+   padding:0px 20px;
+   
+}
+.icon-changed-mode-light:hover{
+    background-color: #ccc !important;
+}
+.icon-changed-mode-dark:hover{
+    color: yellow !important;
+}
+.div-logo{
+    display: flex;
+}
+.icon-logo{
+    font-size: 60px;
+}
+
+.btn-changed-mode-light{
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+}
+.btn-changed-mode-light:hover,.btn.btn-changed-mode-light:active{
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+.btn-changed-mode-dark{
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+}
+.btn-changed-mode-dark:hover,.btn.btn-changed-mode-dark:active{
+    border: 1px solid yellow;
+    background-color: yellow;
+    color: black;
+}
+

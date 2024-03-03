@@ -1,0 +1,94 @@
+body{
+    width: 100%;
+    margin: 0;
+}
+.header{
+    width: 100%;
+}
+.left-navigation{
+    width: 20%;
+}
+.icons-header{
+    font-size: 30px;
+    padding:0px 20px;
+    color: black
+ }
+ .icons-header:hover{
+     color: blue;
+ }
+ .div-logo{
+     display: flex;
+ }
+ .icon-logo{
+     font-size: 60px;
+ }
+ .body-leftnavigation{
+    width: 240px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.div-flex{
+    display: flex;
+}
+.a-flex{
+    display: flex;
+}
+.a-flex > p{
+    margin-left: 60px;
+    margin-top: 4px;
+}
+.icon-nav{
+    font-size: 22px;
+    margin-left: 40px;
+}
+.ul-margin{
+    position: relative;
+
+}
+.ul-margin>li{
+    width: 240px;
+    height: 50px;
+}
+.ul-margin>li>a{
+    width: 240px;
+    height: 50px;
+}
+.ul-margin>li{
+    padding-left: 0px;
+    margin-left: 0px;
+}
+.ul-margin>li:hover>a{
+    background-color: #ccc;
+}
+
+.ul-margin>li>a>i{
+    padding-left: 0px;
+    margin-left: 0px;
+}
+.p-functionnav{
+width: 120px;
+height: 80px;
+}
+.list-card{
+    width: 75%;
+    position: relative;
+    top: -287px;
+    left:25%;
+}
+.card{
+    width: 60%;
+    margin-top: 5px;
+}
+.card-inputstatus{
+    width: 80%;
+    height: 100%;
+}
+.card-status>img{
+    margin-left: 40px;
+}
+.status-icons{
+    font-size: 40px;
+    margin-left: 20px;
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Trang chủ</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/bootstrap-5.3.2-dist/css/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/mycss/homepage.css'>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    
+</head>
+<div class="">
+    <div class="container ">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+          <div class="col-md-3 mb-2 mb-md-0">
+            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+              <div class="div-logo">
+                <i class="bi bi-chat icon-logo "></i>
+                <h1 class="">Wechat</h1>
+              </div>
+            </a>
+            
+          </div>
+    
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 "><i class="bi bi-house-heart icons-header  "></i></a></li>
+            <li><a href="#" class="nav-link px-2 "><i class="bi bi-people  icons-header "></i></a></li>
+            <li><a href="#" class="nav-link px-2 "><i class="bi bi-chat icons-header  "></i></a></li>
+            <li><a href="#" class="nav-link px-2 "><i class="bi bi-play-btn icons-header  "></i></a></li>
+            <li><a href="#" class="nav-link px-2 "><i class="bi bi-bell icons-header "></i></a></li>
+            <li><a href="#" class="nav-link px-2 "><i class="bi bi-gear icons-header  "></i></a></li>
+            <li><a href="#" id="a-mode" class="nav-link px-2 ">
+           
+             
+          
+            </a></li>
+          </ul>
+    
+          <div class="col-md-3 text-end">
+            <button type="button" class="btn btn-outline-primary me-2   btn-login">Đăng nhập</button>
+            <button type="button" class="btn btn-outline-primary me-2   btn-register">Đăng ký</button>
+          </div>
+        </header>
+      </div>
+    <div class="body-leftnavigation">
+        <div class="div-flex">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control " placeholder="Tìm..." aria-label="Search">
+          </form>
+        <div class="dropdown text-end">
+            <a href="#" class="d-block link-body-emphasis text-decoration-none " >
+              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+        </div>
+        </div>
+        <ul class="nav ul-leftnavi ul-margin nav-pills flex-column ">
+            
+            <li>
+              <a href="#" class="nav-link link-body-emphasis a-flex">
+                <i class="bi  icon-nav bi-person"></i>
+                <p class="p-functionnav">Bạn bè</p>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link   link-body-emphasis a-flex">
+                <i class="bi  icon-nav bi-people"></i>
+                <p class="p-functionnav">Nhóm</p>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link  link-body-emphasis a-flex">
+                <i class="bi   icon-nav bi-clock-history"></i>
+                <p class="p-functionnav">Kỉ niệm</p>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link   link-body-emphasis a-flex">
+                <i class="bi   icon-nav bi-bookmark"></i>
+                <p class="p-functionnav">Đã lưu</p>
+              </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link  link-body-emphasis a-flex">
+                  <i class="bi  icon-nav bi-play-btn"></i>
+                  <p class="p-functionnav">Video</p>
+                </a>
+              </li>
+          </ul>
+        
+    </div>
+    <div class="statusForm">
+        <div class="modal fade  modal-sheet  bg-body-secondary p-4 py-md-5" id="modal-createstatus" tabindex="-1" style="display: none ;" role="dialog">
+            <div class="modal-dialog" >
+              <div class="modal-content rounded-4 shadow">
+                <div class="modal-body p-4">
+                  <h2 class="fw-bold mb-0">Tạo bài viết</h2>
+                  <div class="form-floating mb-3">
+                    <input type="text" style="height: 120px;" class="form-control rounded-3"  id="floatingInput" placeholder="" fdprocessedid="h0hky">
+                    <label for="floatingInput">Bạn đang nghĩ gì thế ?</label>
+                  </div>
+          
+                  <ul class="d-grid d-flex flex-row gap-4 my-5 list-unstyled small">
+                    <li class="gap-4 status-icons">
+                      <i class="bi bi-image"></i>
+                    </li>
+                    <li class="gap-4 status-icons">
+                      <i class="bi bi-person-fill-add"></i>
+                    </li>
+                    <li class="gap-4 status-icons">
+                      <i class="bi bi-emoji-smile"></i>
+                    </li>
+                    <li class="gap-4 status-icons">
+                      <i class="bi bi-geo-alt"></i>
+                    </li>
+                  </ul>
+                  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-lg btn-primary mt-5 w-100" id="btn-close-createstatus" data-dismiss="modal" >Đăng</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    
+    <div class="list-card">
+        <div class="card card-status d-flex flex-row" >
+            
+            <div class=" d-flex flex-row card-body ">
+                <input type="text" class="form-control inputstatus" data-bs-toggle="modal" data-bs-target="#modal-createstatus"  id="inputCreateStatus" placeholder="Chia sẻ cảm xúc của bạn!" >
+                <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+              </div>
+          </div>
+          
+      
+        <div class="card ">
+            <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              
+            </div>
+        </div>
+          
+       
+
+        <div class="card ">
+            <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              
+            </div>
+        </div>
+          
+        <div class="card">
+            <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              
+            </div>
+        <img src="..." class="card-img-bottom" alt="...">
+        
+    </div>
+    <script src="../js/myjs/homepage.js"></script>
+</body>
+</html>

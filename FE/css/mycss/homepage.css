@@ -2,12 +2,21 @@ body{
     width: 100%;
     margin: 0;
 }
+.firstchild-body{
+  
+    width: 100%;
+    position: relative;
+    
+}
 .header{
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #fff;
 }
-.left-navigation{
-    width: 20%;
-}
+
 .icons-header{
     font-size: 30px;
     padding:0px 20px;
@@ -17,16 +26,18 @@ body{
      color: blue;
  }
  .div-logo{
+    margin-left: 44px;
      display: flex;
  }
  .icon-logo{
      font-size: 60px;
  }
- .body-leftnavigation{
-    width: 240px;
-    position: relative;
-    top: 0px;
-    left: 0px;
+ .leftnavigation{
+    width: 20%;
+    position: fixed;
+    top: 130px;
+    left: 20px;
+    z-index: 1;
 }
 
 .div-flex{
@@ -73,13 +84,14 @@ height: 80px;
 }
 .list-card{
     width: 75%;
-    position: relative;
-    top: -287px;
+    position: absolute;
+    top: 124px;
     left:25%;
+    z-index: -1;
 }
 .card{
     width: 60%;
-    margin-top: 5px;
+    margin-top: 8px;
 }
 .card-inputstatus{
     width: 80%;
@@ -91,4 +103,22 @@ height: 80px;
 .status-icons{
     font-size: 40px;
     margin-left: 20px;
+}
+.rightnavigation{
+    width: 20%;
+    position: fixed;
+    top: 130px;
+    right: 0;
+}
+.btn-friend{
+
+    width: 120px;
+}
+.a-birtday{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.title-rightnavi{
+    color: #727575;
 }

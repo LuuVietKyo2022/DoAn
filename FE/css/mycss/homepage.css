@@ -13,7 +13,7 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 1;
     background-color: #fff;
 }
 
@@ -121,4 +121,49 @@ height: 80px;
 }
 .title-rightnavi{
     color: #727575;
+}
+
+.btn-footer-card{
+    color: black;
+    width: 220px;
+}
+.btn-footer-card > i{
+    font-style: normal;
+}
+.btn-footer-card:hover{
+    background-color: #b1b6b6;
+    
+}
+.a-footer-card{
+    text-decoration: none;
+    color: black;
+    margin-right: 12px;
+}
+.detail-comment{
+    background-color: #F0F2F5;
+    border: 1px solid #F0F2F5;
+    border-radius: 10px;
+    padding: 0 12px;
+}
+.user-comment{
+    margin-top: 12px;
+}
+
+.detail-comment>p, .detail-comment>h6{
+    margin: 0 ;
+    padding: 0;
+    
+}
+.my-comment>input{
+    width: 90%;
+}
+#i-send {
+    margin-left: 12px;
+    font-size: 24px;
+}
+.my-comment>a{
+    color: black;
+}
+.comment{
+    margin-top: 8px;
 }

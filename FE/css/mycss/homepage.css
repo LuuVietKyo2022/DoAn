@@ -89,13 +89,31 @@ height: 80px;
     left:25%;
     z-index: -1;
 }
+.card-text{
+    margin-left: 4px;
+    margin-bottom: 0;
+}
+.card-body{
+    padding: 4px;
+    margin-left: 16px;
+    margin-top: 0px;
+}
+.card-title{
+    margin-left: 4px;
+    margin-bottom: 0px;
+}
 .card{
+    background-color: #fff;
     width: 60%;
     margin-top: 8px;
 }
 .card-inputstatus{
     width: 80%;
     height: 100%;
+}
+.card>div>.img-normal{
+    margin-left: 8px;
+    margin-top: 4px;
 }
 .card-status>img{
     margin-left: 40px;

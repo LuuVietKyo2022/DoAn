@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Trang chủ</title>
+    <title>Wechat</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='../css/bootstrap-5.3.2-dist/css/bootstrap.min.css'>
     <link rel="stylesheet" type="text/css"
@@ -22,46 +22,46 @@
 
 <body>
     <div class="firstchild-body">
-        <div class="container ">
-            <div
-                class="header d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                <div class="col-md-3 mb-2 mb-md-0">
-                    <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                        <div class="div-logo">
-                            <i class="bi bi-chat icon-logo "></i>
-                            <h1 class="">Wechat</h1>
-                        </div>
-                    </a>
 
-                </div>
+        <div
+            class="header d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                    <div class="div-logo">
+                        <i class="bi bi-chat icon-logo "></i>
+                        <h1 class="">Wechat</h1>
+                    </div>
+                </a>
 
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 "><i class="bi bi-house-heart icons-header  "></i></a></li>
-                    <li><a href="#" class="nav-link px-2 "><i class="bi bi-people  icons-header "></i></a></li>
-                    <li><a href="#" class="nav-link px-2 "><i class="bi bi-chat icons-header  "></i></a></li>
-                    <li><a href="#" class="nav-link px-2 "><i class="bi bi-play-btn icons-header  "></i></a></li>
-                    <li><a href="#" class="nav-link px-2 "><i class="bi bi-bell icons-header "></i></a></li>
-                    <li><a href="#" class="nav-link px-2 "><i class="bi bi-gear icons-header  "></i></a></li>
-                    <li><a href="#" id="a-mode" class="nav-link px-2 ">
+            </div>
+
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="./homepage.html" class="nav-link px-2 "><i class="bi bi-house-heart icons-header  "></i></a></li>
+                <li><a href="#" class="nav-link px-2 "><i class="bi bi-people  icons-header "></i></a></li>
+                <li><a href="#" class="nav-link px-2 "><i class="bi bi-chat icons-header  "></i></a></li>
+                <li><a href="#" class="nav-link px-2 "><i class="bi bi-play-btn icons-header  "></i></a></li>
+                <li><a href="#" class="nav-link px-2 "><i class="bi bi-bell icons-header "></i></a></li>
+                <li><a href="#" class="nav-link px-2 "><i class="bi bi-gear icons-header  "></i></a></li>
+                <li><a href="#" id="a-mode" class="nav-link px-2 ">
 
 
 
-                        </a></li>
-                </ul>
+                    </a></li>
+            </ul>
 
-                <div class="col-md-3 text-end">
-                    <button type="button" class="btn btn-outline-primary me-2   btn-login">Đăng nhập</button>
-                    <button type="button" class="btn btn-outline-primary me-2   btn-register">Đăng ký</button>
-                </div>
+            <div class="col-md-3 text-end">
+                <button type="button" class="btn btn-outline-primary me-2   btn-login">Đăng nhập</button>
+                <button type="button" class="btn btn-outline-primary me-2   btn-register">Đăng ký</button>
             </div>
         </div>
+        
         <div class="leftnavigation">
             <div class="div-flex">
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                     <input type="search" class="form-control " placeholder="Tìm..." aria-label="Search">
                 </form>
                 <div class="dropdown text-end">
-                    <a href="#" class="d-block link-body-emphasis text-decoration-none ">
+                    <a href="./personalpage.html" class="d-block link-body-emphasis text-decoration-none ">
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
                 </div>
@@ -167,8 +167,12 @@
         <div class="list-card">
             <div class="card card-status d-flex flex-row">
 
-                <div class=" d-flex flex-row card-body ">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+                <div class=" d-flex flex-row card-body card-body-avatar">
+                    <a href="./homepage.html" >
+                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        class="img-miniavatar rounded-circle">
+                    </a>
+                   
                     <input type="text" class="form-control inputstatus" data-bs-toggle="modal"
                         data-bs-target="#modal-createstatus" id="inputCreateStatus"
                         placeholder="Chia sẻ cảm xúc của bạn!">
@@ -179,10 +183,11 @@
 
             <div class="card ">
                 <div class="d-flex flex-row">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="img-normal rounded-circle">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        class="img-normal rounded-circle">
                     <div class="d-flex flex-column">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
                     </div>
                 </div>
                 <div class="card-body">
@@ -197,10 +202,11 @@
 
             <div class="card ">
                 <div class="d-flex flex-row">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="img-normal rounded-circle">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        class="img-normal rounded-circle">
                     <div class="d-flex flex-column">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
                     </div>
                 </div>
                 <div class="card-body">
@@ -209,18 +215,19 @@
                         additional content. This content is a little bit longer.</p>
 
                 </div>
-                
+
             </div>
 
             <div class="card">
                 <div class="d-flex flex-row">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class=" img-normal  rounded-circle">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        class=" img-normal  rounded-circle">
                     <div class="d-flex flex-column">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
                     </div>
                 </div>
-                
+
                 <div class="card-body">
 
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
@@ -265,6 +272,18 @@
                                     </p>
                                     <p>Ảnh rất đẹp !</p>
                                 </div>
+
+                            </div>
+                            <div class="title-actioncomment d-flex flex-row">
+                                <a href="#">
+                                    <p>3 phút</p>
+                                </a>
+                                <a href="#">
+                                    <p>Yêu thích</p>
+                                </a>
+                                <a href="#">
+                                    <p>Phản hồi</p>
+                                </a>
                             </div>
                         </div>
                         <div class="my-comment d-flex flex-row comment">
@@ -275,8 +294,8 @@
                             <a href="#">
                                 <i id="i-send" class="bi  bi-send"></i>
                             </a>
-
                         </div>
+
                     </div>
 
                 </div>

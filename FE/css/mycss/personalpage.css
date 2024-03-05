@@ -1,0 +1,125 @@
+body{
+    background-color: #F0F2F5;
+}
+.header{
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+    padding: 0;
+    
+}
+
+
+.icons-header{
+    font-size: 30px;
+    padding:0px 20px;
+    color: black;
+ }
+ .icons-header:hover{
+     color: blue;
+ }
+ .div-logo{
+    margin-left: 44px;
+     display: flex;
+ }
+ .icon-logo{
+     font-size: 40px;
+ }
+ .header>ul{
+    margin-top: 0;
+    position: relative;
+    top: -4px;
+ }
+ .btn-header{
+    position: relative;
+    top: -4px;
+ }
+ .div-background{
+    width: 70%;
+    height: 405px;
+    margin:60px 15% 0 15%;
+    
+    background-color: antiquewhite;
+ }
+ .div-background>img{
+    width: 100%;
+    
+ }
+ .div-background{
+    position: relative;
+ }
+ .div-background>.btn-change-background{
+    position: absolute;
+    right: 32px;
+    bottom: 16px;
+ }
+ .svg-camera{
+    margin-bottom: 4px;
+ }
+ .basic-info{
+    margin: 0 17% 0 17%;
+    position: relative;
+ }
+ .btn-change-avatar{
+    background-color: #E4E6EB;
+    
+ }
+ .user-name{
+    margin-left: 20px;
+    margin-top: 28px;
+ }
+ .user-avatar{
+    position: relative;
+ }
+ .user-avatar>img{
+  
+ }
+ .user-avatar>.btn-change-avatar{
+    position: absolute;
+    top: 133px;
+    left: 122px;
+ }
+ .btn-changeprofile{
+    width: 120px;
+    height: 40px;
+    position: absolute;
+    top: 66px;
+    right: 122px;
+ }
+ .div-body-personalpage{
+    width: 70%;
+    margin: 0 15%;
+    
+ }
+ .left-navigation{
+    width: 50%;
+    margin-top: 8px;
+    margin-left: 3%;
+    background-color: #fff;
+    border-radius: 5%;
+ }
+ .left-navigation>.detail-info>h2{
+    margin-top: 20px;
+    margin-left: 18px;
+ }
+ .left-navigation>.story>p{
+    margin-left: 112px;
+ }
+ .left-navigation>.story>button{
+    margin-left: 20px;
+    width: 92%;
+ }
+ .sub-detail-info {
+    margin-left: -30px;
+    width: 92%;
+ }
+ .list-group-item{
+    border: none;
+ }
+ .list-group-item .h6-subinfo{
+    margin-top: 4px;
+ }

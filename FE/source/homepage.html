@@ -36,17 +36,14 @@
             </div>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="./homepage.html" class="nav-link px-2 "><i class="bi bi-house-heart icons-header  "></i></a></li>
+                <li><a href="./homepage.html" class="nav-link px-2 "><i
+                            class="bi bi-house-heart icons-header  "></i></a></li>
                 <li><a href="#" class="nav-link px-2 "><i class="bi bi-people  icons-header "></i></a></li>
-                <li><a href="#" class="nav-link px-2 "><i class="bi bi-chat icons-header  "></i></a></li>
-                <li><a href="#" class="nav-link px-2 "><i class="bi bi-play-btn icons-header  "></i></a></li>
+                <li id="li-chat" onclick="showListMessages()"><a href="#" class="nav-link px-2 "><i class="bi bi-chat icons-header  "></i></a></li>
+                <li><a href=""   class="nav-link px-2 "><i class="bi bi-play-btn icons-header  "></i></a></li>
                 <li><a href="#" class="nav-link px-2 "><i class="bi bi-bell icons-header "></i></a></li>
                 <li><a href="#" class="nav-link px-2 "><i class="bi bi-gear icons-header  "></i></a></li>
-                <li><a href="#" id="a-mode" class="nav-link px-2 ">
-
-
-
-                    </a></li>
+                <li></li>
             </ul>
 
             <div class="col-md-3 text-end">
@@ -54,7 +51,7 @@
                 <button type="button" class="btn btn-outline-primary me-2   btn-register">Đăng ký</button>
             </div>
         </div>
-        
+
         <div class="leftnavigation">
             <div class="div-flex">
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -168,11 +165,11 @@
             <div class="card card-status d-flex flex-row">
 
                 <div class=" d-flex flex-row card-body card-body-avatar">
-                    <a href="./homepage.html" >
+                    <a href="./homepage.html">
                         <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
-                        class="img-miniavatar rounded-circle">
+                            class="img-miniavatar rounded-circle">
                     </a>
-                   
+
                     <input type="text" class="form-control inputstatus" data-bs-toggle="modal"
                         data-bs-target="#modal-createstatus" id="inputCreateStatus"
                         placeholder="Chia sẻ cảm xúc của bạn!">
@@ -300,6 +297,77 @@
 
                 </div>
 
+            </div>
+            </div>
+            <div  class=" list-messages flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+                <div id="div-listmessages" class="list-group  group-messages" >
+                    <div class="div-tilte-button d-flex flex-row">
+                    <h2>Đoạn chat</h2>
+                    <button type="button" class="btn btn-listchats btn-light btn-friend " onclick="showCreateNewMessage()"><i class="bi bi-pencil-square"></i></button>
+                    <button type="button" class="btn btn-listchats btn-light btn-friend " onclick="closeLissMessages()" ><i class="bi bi-x-lg"></i></i></button>
+                    </div>
+                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                            class=" img-normal  rounded-circle">
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                            <div>
+                                <h6 class="mb-0">List group item heading</h6>
+                                <p class="mb-0 opacity-75">Some placeholder content in a paragraph.</p>
+                            </div>
+                            <small class="opacity-50 text-nowrap">now</small>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                            class=" img-normal  rounded-circle">
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                            <div>
+                                <h6 class="mb-0">Another title here</h6>
+                                <p class="mb-0 opacity-75">Some placeholder content in a paragraph that goes a little
+                                    longer so it wraps to a new line.</p>
+                            </div>
+                            <small class="opacity-50 text-nowrap">3d</small>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                            class=" img-normal  rounded-circle">
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                            <div>
+                                <h6 class="mb-0">Third heading</h6>
+                                <p class="mb-0 opacity-75">Some placeholder content in a paragraph.</p>
+                            </div>
+                            <small class="opacity-50 text-nowrap">1w</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="div-createmessage" id="div-createNewMessage">
+                <div  class="list-group  group-messages" >
+                    <div class="div-tilte-button d-flex flex-row">
+                    <h5>Tin nhắn mới</h5>
+                    <button type="button" id="btn-closenewmessage" class="btn btn-listchats btn-light " onclick="closeCreateNewMessage()" ><i class="bi bi-x-lg"></i></i></button>
+                    </div>
+                    <div class="input-group ">
+                        <span class="input-group-text" id="basic-addon1">Đến</span>
+                        <input type="text" class="form-control"  aria-describedby="basic-addon1">
+                    </div>
+                    <a href="#" id="a-input-mess" style="width: 100%;" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <img src="https://github.com/mdo.png" style="text-align: center;" alt="mdo" width="40" height="40"
+                            class=" img-normal  rounded-circle">
+                            <h6 class="mb-0">Văn Quang</h6>
+                    </a>   
+                        <div  class="d-flex input-contentmess">
+                            <input type="text" class="form-control" onchange="inputMessage()" onkeydown="inputMessage()"
+                                placeholder="Nội dung tin nhắn ..." id="my-inputmessage" >
+                            <a href="#">
+                                <i id="i-send-mess" class="bi  bi-send"></i>
+                            </a>
+                        </div>
+                    
+                   
+                    
+                </div>
             </div>
 
             <script src="../js/myjs/homepage.js"></script>

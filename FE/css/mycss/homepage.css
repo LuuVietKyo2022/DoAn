@@ -30,7 +30,7 @@ body{
      display: flex;
  }
  .icon-logo{
-     font-size: 40px;
+     font-size: 60px;
  }
  .leftnavigation{
     width: 20%;
@@ -197,4 +197,56 @@ margin-left: 0;
     text-decoration: none;
     color: black;
     font-size: 12px;
+}
+.list-messages h2{
+    margin-left: 8px;
+}
+.list-messages{
+    
+    position: fixed;
+    width: 25%;
+    top: 84px;
+    left: 70%;
+}
+#div-listmessages{
+   display: none;
+}
+.group-messages{
+    border: 1px solid #D2D2D2;
+    background-color: #fff;
+}
+.btn-listchats{
+    margin-left: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.div-createmessage h5{
+    margin-left: 8px;
+} 
+.div-createmessage{
+    display: none;
+    position: fixed;
+   
+    top: 320px;
+    right:40px;
+    
+}
+.input-contentmess{
+    margin-top: 194px;
+}
+.div-createmessage .btn-listchats{
+    margin-left: 110px;
+}
+#my-inputmessage{
+    padding: 0;
+    
+}
+#a-input-mess{
+    width: 80%;
+ padding: 8px !important;
+}
+.input-contentmess > a{
+ margin-left: 8px;
+ font-size: 24px;
 }

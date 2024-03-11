@@ -47,6 +47,74 @@
         inputComment2.focus();
     })
    
+    function showListMessages(){
+        
+        const aChatIcon=document.getElementById("li-chat");
+        const divListMessages=document.getElementById("div-listmessages");
+        const eleDisplay=divListMessages.style.display;
+        console.log(divListMessages.getAttribute("display"));
+        var firstClick=1;
+        if(firstClick==1){
+            divListMessages.style.display="block"; 
+            firstClick=0;
+        }else{
+            if(eleDisplay=="none" || eleDisplay=="null"||eleDisplay==null){
+                divListMessages.style.display="block";
+            }
+            else{
+                divListMessages.style.display="none";
+            }
+        }
+            
+    }
+    function closeLissMessages(){
+        const aChatIcon=document.getElementById("li-chat");
+        const divListMessages=document.getElementById("div-listmessages");
+        const eleDisplay=divListMessages.style.display;
+        //console.log(eleDisplay);
+            if(eleDisplay=="block"){
+                divListMessages.style.display="none";
+            }
+    }
+    function closeCreateNewMessage(){
+        const divCreateNewMessage=document.getElementById("div-createNewMessage");
+        var eleDisplay=divCreateNewMessage.style.display;
+        console.log(eleDisplay);
+            if(eleDisplay=="block"||eleDisplay==""){
+                divCreateNewMessage.style.display="none";
+            }
+    }
+    function showCreateNewMessage(){
+        const divCreateNewMessage=document.getElementById("div-createNewMessage");
+        const divListMessages=document.getElementById("div-listmessages");
+        //const inputMessage=document.getElementById("my-inputmessage");
+        //inputMessage.focus();
+        divCreateNewMessage.style.display="block";
+        divListMessages.style.display="none";
 
-    
+        
+    }
+    function inputMessage(){
+        const inputMessage=document.getElementById("my-inputmessage");
+        const iSend=document.getElementById("i-send-mess");
+        if(inputMessage.value!=''){
+            iSend.classList.add('bi-send-fill');
+            iSend.classList.remove('bi-send');
+            iSend.style.color="blue";
+        }else{
+            iSend.classList.add('bi-send');
+            iSend.classList.remove('bi-send-fill');
+            iSend.style.color="black";
+        }
+    }
+
+    // const aChatIcon=document.getElementById("a-chat");
+    // const divListMessages=document.getElementById("div-listmessages");
+    // aChatIcon.addEventListener('click',()=>{
+    //     if(divListMessages.getAttribute("display")=="none"){
+    //         divListMessages.setAttribute("display","block");
+    //     }else{
+    //         divListMessages.setAttribute("display","none");
+    //     }
+    // })
    

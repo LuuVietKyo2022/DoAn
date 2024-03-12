@@ -39,7 +39,9 @@ body{
     left: 20px;
     z-index: 1;
 }
-
+.btn-logout{
+    margin-right: 40px;
+}
 .div-flex{
     display: flex;
 }

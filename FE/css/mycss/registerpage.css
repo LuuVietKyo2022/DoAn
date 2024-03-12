@@ -1,0 +1,23 @@
+.form-register{
+    width: 298px;
+    height: 475px;
+    margin-top: 16px;
+    margin-left: 40%;
+}
+.div-logo{
+    position: relative;
+    
+   
+}
+.div-logo h1{
+    font-size: 72px;
+}
+.icon-logo{
+    font-size: 120px;
+}
+#btn-showpass,#btn-showpass2{
+    font-size: 20px;
+    position: relative;
+    top: -33px;
+    left: 263px;
+}

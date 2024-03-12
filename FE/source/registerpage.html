@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <div class="d-flex">
     <div class="div-logo d-flex">
         <i class="bi bi-chat icon-logo "></i>
         <h1 class="">Wechat</h1>
@@ -28,16 +29,16 @@
     </div>
     <form class="form-register">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email hoặc Số điện thoại</label>
+            <label for="exampleInputEmail1" class="form-label">Email</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">Không nên chia sẻ thông tin tài khoản</div>
         </div>
-        <div class="mb-3">
+        <div class="mb-1">
             <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
             <input type="password" class="form-control" id="exampleInputPassword1">
             <i id="btn-showpass" onclick="showOrHidePass()" class="bi bi-eye-slash-fill"></i>
         </div>
-        <div class="mb-3">
+        <div class="mb-1">
             <label for="exampleInputPassword1" class="form-label">Nhập lại Mật khẩu</label>
             <input type="password" class="form-control" id="exampleInputPassword2">
             <i id="btn-showpass2" onclick="showOrHidePass2()" class="bi bi-eye-slash-fill"></i>
@@ -45,6 +46,7 @@
         <button type="submit" class="btn btn-primary">Đăng ký</button>
         <p class="mt-5 mb-3 text-body-secondary">Bạn đã có tài khoản hãy <a href="./loginpage.html">đăng nhập</a> nhé !</p>
     </form>
+    </div>
     <script src="../js/myjs/registerpage.js"></script>
 </body>
 

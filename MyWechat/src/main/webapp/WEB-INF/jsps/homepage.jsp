@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -36,7 +37,7 @@
             </div>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="./homepage.html" class="nav-link px-2 "><i
+                <li><a href="/home" class="nav-link px-2 "><i
                             class="bi bi-house-heart icons-header  "></i></a></li>
                 <li><a href="#" class="nav-link px-2 "><i class="bi bi-people  icons-header "></i></a></li>
                 <li id="li-chat" onclick="showListMessages()"><a href="#" class="nav-link px-2 "><i class="bi bi-chat icons-header  "></i></a></li>
@@ -47,7 +48,7 @@
             </ul>
 
             <div class="col-md-3 text-end">
-                <a href="./loginpage.html" type="button" class="btn btn-outline-primary btn-logout  ">Đăng xuất</a>
+                <a href="/login" type="button" class="btn btn-outline-primary btn-logout  ">Đăng xuất</a>
                
             </div>
         </div>
@@ -58,7 +59,7 @@
                     <input type="search" class="form-control " placeholder="Tìm..." aria-label="Search">
                 </form>
                 <div class="dropdown text-end">
-                    <a href="./personalpage.html" class="d-block link-body-emphasis text-decoration-none ">
+                    <a href="/personal" class="d-block link-body-emphasis text-decoration-none ">
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
                 </div>
@@ -165,7 +166,7 @@
             <div class="card card-status d-flex flex-row">
 
                 <div class=" d-flex flex-row card-body card-body-avatar">
-                    <a href="./homepage.html">
+                    <a href="/home">
                         <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
                             class="img-miniavatar rounded-circle">
                     </a>

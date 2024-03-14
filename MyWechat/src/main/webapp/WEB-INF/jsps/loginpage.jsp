@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -37,7 +38,7 @@
           <i id="btn-showpass" onclick="showOrHidePass()" class="bi bi-eye-slash-fill"></i>
         </div>
         <button class="btn btn-primary w-100 py-2" type="submit" fdprocessedid="ced5sd">Đăng nhập</button>
-        <p class="mt-5 mb-3 text-body-secondary">Bạn chưa có tài khoản hãy <a href="./registerpage.html">đăng ký</a> nhé !</p>
+        <p class="mt-5 mb-3 text-body-secondary">Bạn chưa có tài khoản hãy <a href="/register">đăng ký</a> nhé !</p>
     </form>
     <script src="../js/myjs/loginpage.js"></script>
 </body>

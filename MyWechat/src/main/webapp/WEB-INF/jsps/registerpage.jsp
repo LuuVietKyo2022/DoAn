@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -44,7 +45,7 @@
             <i id="btn-showpass2" onclick="showOrHidePass2()" class="bi bi-eye-slash-fill"></i>
         </div>
         <button type="submit" class="btn btn-primary">Đăng ký</button>
-        <p class="mt-5 mb-3 text-body-secondary">Bạn đã có tài khoản hãy <a href="./loginpage.html">đăng nhập</a> nhé !</p>
+        <p class="mt-5 mb-3 text-body-secondary">Bạn đã có tài khoản hãy <a href="/login">đăng nhập</a> nhé !</p>
     </form>
     </div>
     <script src="../js/myjs/registerpage.js"></script>

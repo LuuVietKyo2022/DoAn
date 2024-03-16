@@ -6,6 +6,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Wechat</title>
+	<link rel="icon" href="..\images\icon-tab\favicon2.png" type="image/png" >
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='../css/bootstrap-5.3.2-dist/css/bootstrap.min.css'>
     <link rel="stylesheet" type="text/css"

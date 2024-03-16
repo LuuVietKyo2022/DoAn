@@ -6,6 +6,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Wechat</title>
+	<link rel="icon" href="..\images\icon-tab\favicon2.png" type="image/png" >
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='../css/bootstrap-5.3.2-dist/css/bootstrap.min.css'>
     <link rel="stylesheet" type="text/css"
@@ -36,7 +37,7 @@
         </div>
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="./homepage.html" class="nav-link px-2 "><i class="bi bi-house-heart icons-header  "></i></a>
+            <li><a href="/home" class="nav-link px-2 "><i class="bi bi-house-heart icons-header  "></i></a>
             </li>
             <li><a href="#" class="nav-link px-2 "><i class="bi bi-people  icons-header "></i></a></li>
             <li><a href="#" class="nav-link px-2 "><i class="bi bi-chat icons-header  "></i></a></li>
@@ -51,8 +52,7 @@
         </ul>
 
         <div class="col-md-3 text-end btn-header">
-            <button type="button" class="btn btn-outline-primary me-2   btn-login">Đăng nhập</button>
-            <button type="button" class="btn btn-outline-primary me-2   btn-register">Đăng ký</button>
+            <a href="/login" type="button" class="btn btn-outline-primary btn-logout  ">Đăng xuất</a>
         </div>
     </div>
     <div class="" style="background-color: #ffffff;">

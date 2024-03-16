@@ -10,7 +10,7 @@ public class HomeController {
 	
 	@RequestMapping(value ="/home")
 	public String index() {
-		System.out.println("here");
+
 		  
 		 return "homepage";
 	}

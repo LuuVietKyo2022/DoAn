@@ -12,7 +12,9 @@ body{
     padding: 0;
     
 }
-
+.btn-logout{
+    margin-right: 40px;
+}
 
 .icons-header{
     font-size: 30px;

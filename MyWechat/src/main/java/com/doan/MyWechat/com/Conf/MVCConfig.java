@@ -1,4 +1,4 @@
-package com.doan.MyWechat.com.conf;
+package com.doan.MyWechat.com.Conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

@@ -12,22 +12,18 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel='stylesheet' type='text/css' media='screen' href='../css/mycss/addinforpage.css'>
-    <script src="jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr@latest/dist/flatpickr.min.js"></script>
+    <script src="../js/jquery/jQuery.js"></script>
+    <script src="../js/flatpickjs/flatpickr.min.js"></script>
+	
+	
 </head>
 
-<body>
+<body cz-shortcut-listen="true">
     <div class="py-5 text-center">
 
         <h2>Thêm thông tin cơ bản</h2>
         <p class="lead">Thêm những thông tin cơ bản của bạn để dễ dàng kết nối với mọi người !</p>
-        <p class="lead"><a href="#">Bỏ qua</a></p>
+        <p class="lead btn-light"><a href="#">Bỏ qua</a></p>
     </div>
     <div class="div-infoBasicUser">
 
@@ -80,7 +76,7 @@
                     </div>
                     <div class="col-6 ">
                         <label for="birthday" class="form-label">Ngày sinh</label>
-                        <input id="birthday" class="birthday-input" type="datetime-local" datetime-local="2024-12-03T00:00:00+07:00">
+                        <input id="birthday" class="birthday-input" type="date" >
                         <div class="invalid-feedback">
                             Please select a valid country.
                         </div>
@@ -110,14 +106,8 @@
                     tin</button>
         </form>
     </div>
-    <script>
-        flatpickr('#birthday', {
-        dateFormat: 'd/m/Y',
-        enableTime: false,
-        time_24hr: false,
-     });
-    </script>
-    <script src="../js/myjs/addinforpage.js"></script>
+	
+    
 </body>
 
 </html>

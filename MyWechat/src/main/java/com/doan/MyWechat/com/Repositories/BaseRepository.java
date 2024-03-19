@@ -9,7 +9,7 @@ import org.springframework.data.repository.Repository;
 @NoRepositoryBean
 public interface BaseRepository<T,ID > extends Repository<T, ID>{
 	public Optional<T> findById(ID id);
-	
+	public T findObjectById(ID id);
 	public T save(T entity);
 	
 	public List<T> findAll();

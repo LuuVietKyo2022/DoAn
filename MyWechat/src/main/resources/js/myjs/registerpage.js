@@ -107,9 +107,9 @@ function ajaxPost(){
 		url:"/register",
 		data:JSON.stringify(formData),
 		dataType:"json",
-		error:function (result){
-			if(result.status==200){
-				
+		success:function (result){
+			console.table(result);
+			if(result!=null){
 			textSuccces.innerText="Bạn đã đăng ký thành công hãy thêm thông tin để kết nối với mọi người !";
 			textSuccces.style.display="block";
 			inputPassword.value="";
@@ -118,8 +118,12 @@ function ajaxPost(){
 			btnAddInfo.style.display="block";
 			btnRegister.style.display="none";
 			textSuggest.style.display="none";
+			btnAddInfo.href=btnAddInfo.href+result;
 			} 
-			else if(result.status==500){
+			
+		},
+		error:function(result){
+			if(result.status==500){
 			if(result.responseText="error by dupplicate mail")
 			{
 			textError.innerText="Email bạn đăng ký đã tồn tại !";
@@ -128,8 +132,8 @@ function ajaxPost(){
 			textError.innerText="Đã xảy ra lỗi trong quá trình đăng ký,hãy thử đăng ký lại nhé !";
 			textError.style.display="block";	
 			}
-				
-			}	
+		}	
 		}
+		
 	})
 }

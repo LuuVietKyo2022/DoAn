@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -29,7 +30,8 @@
         <h1 class="">Wechat</h1>
         
     </div>
-    <form class="form-register">
+    <form class="form-register" method="POST" 
+          action="/addinfor" modelAttribute="user">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
             <input type="email" onkeyup="checkVaidateEmail()" class="form-control" id="exampleInputEmail" aria-describedby="email">
@@ -48,7 +50,7 @@
 		<p class="" id="text-error" style="color:red;display:none"><p>
 		<p class="" id="text-success" style="color:blue;display:none">Success<p>
         <button type="button" id="btn-register" onclick="submitFormregister()" class="btn btn-primary">Đăng ký</button>
-		<a type="button" id="btn-addinfo" href="/addinfor" onclick="changeInputDate()" style="display:none" class="btn btn-primary">Thêm thông tin</a>
+		<a type="button" id="btn-addinfo" href="/addinfor/" style="display:none" class="btn btn-primary">Thêm thông tin</a>
         <p class="mt-5 mb-3 text-body-secondary" id="text-suggest">Bạn đã có tài khoản hãy <a href="/login">đăng nhập</a> nhé !</p>
     </form>
     </div>

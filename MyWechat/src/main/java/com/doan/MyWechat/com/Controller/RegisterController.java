@@ -2,16 +2,23 @@ package com.doan.MyWechat.com.Controller;
 
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.doan.MyWechat.com.Common.COMMON;
 import com.doan.MyWechat.com.Entities.User;
+import com.doan.MyWechat.com.Repositories.UserRepository;
 import com.doan.MyWechat.com.Services.UserService;
 
 
@@ -19,6 +26,8 @@ import com.doan.MyWechat.com.Services.UserService;
 public class RegisterController {
 	@Autowired
 	UserService userService;
+	@Autowired 
+	UserRepository userRepo;
 	
 	@RequestMapping(value = "/register",method = RequestMethod.GET)
 	public String index() {
@@ -26,19 +35,36 @@ public class RegisterController {
 	}
 	
 	@RequestMapping(value = "/register",method = RequestMethod.POST)
-	public ResponseEntity<String> registerAccount(@RequestBody User user) {
+	public ResponseEntity<String> registerAccount(@RequestBody User user,Model model) {
 		COMMON status=userService.reigisterAccount(user.getEmail(),user.getPassword());
 		if (status.equals(COMMON.REGISTER_STATUS_SUCESS)) {
-			return ResponseEntity.ok("success");
+			User userRegistred=userRepo.findTopUserByEmail(user.getEmail());
+			return ResponseEntity.ok(userRegistred.getId()+"");
 		}else if (status.equals(COMMON.REGISTER_STATUS_ERROR_DUPLICATE_MAIL)) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error by dupplicate mail");
 		}
 		else return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error");
 	}
 	
-	@RequestMapping(value = "/addinfor",method = RequestMethod.GET)
-	public String addInforUser() {
+	@RequestMapping(value = "/addinfor/{id}",method = RequestMethod.GET)
+	public String returnAddInforFrom(@PathVariable int id) {
 		return "addinforpage";
 	}
 	
+	@RequestMapping(value = "/addinfor/{id}",method = RequestMethod.POST)
+	public ResponseEntity<String> addInforUser(@PathVariable int id,
+			@RequestParam String lastname,
+			@RequestParam String firstname,
+			@RequestParam String username,
+			@RequestParam String gender,
+			@RequestParam String birthday,
+			@RequestParam String address,
+			@RequestParam String address2,
+			@RequestParam("avatar") MultipartFile avatar
+			) {
+		COMMON status=userService.reigisterInforUser(id,lastname,firstname,username,gender,birthday,address,address2,avatar);
+		if (status.equals(COMMON.ADDINFOR_STATUS_SUCCESS)) {
+			return ResponseEntity.ok("success");
+		}else return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error");
+	}
 }

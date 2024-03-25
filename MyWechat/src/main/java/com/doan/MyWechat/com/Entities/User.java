@@ -1,6 +1,7 @@
 package com.doan.MyWechat.com.Entities;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,10 +45,16 @@ public class User {
 	private Date birthDay;
 	
 	@Column(name="created_at")
-	private Date createdAt;
+	private Timestamp createdAt;
 	
 	@Column(name="updated_at") 
-	private Date updatedAt;
+	private Timestamp updatedAt;
+	
+	@Column 
+	private String address1;
+	
+	@Column
+	private String address2;
 
 	public int getId() {
 		return id;
@@ -128,25 +135,44 @@ public class User {
 	public void setBirthDay(Date birthDay) {
 		this.birthDay = birthDay;
 	}
+	
 
-	public Date getCreatedAt() {
+	public String getAddress1() {
+		return address1;
+	}
+
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Date getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
+
 	public User(int id, String username, String email, String password, String avatar, String coverPhoto,
-			String firstName, String lastName, String gender, Date birthDay, Date createdAt, Date updatedAt) {
+			String firstName, String lastName, String gender, Date birthDay, Timestamp createdAt, Timestamp updatedAt,
+			String address1, String address2) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -160,6 +186,8 @@ public class User {
 		this.birthDay = birthDay;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+		this.address1 = address1;
+		this.address2 = address2;
 	}
 
 	public User() {

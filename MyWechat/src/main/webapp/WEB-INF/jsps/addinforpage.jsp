@@ -23,8 +23,7 @@
     <div class="py-5 text-center">
 
         <h2>Thêm thông tin cơ bản</h2>
-        <p class="lead">Thêm những thông tin cơ bản của bạn để dễ dàng kết nối với mọi người !</p>
-        <a class="btn-light" href="#">Bỏ qua</a>
+        <p id="text-guildline" class="lead">Thêm những thông tin cơ bản của bạn để dễ dàng kết nối với mọi người !</p>
     </div>
     <div class="div-infoBasicUser">
 
@@ -93,8 +92,9 @@
                         fdprocessedid="foenn">
                 </div>
 
-                <button class="w-100 btn btn-primary btn-lg" onclick="ajaxPost()" id="btn-addinfor" type="button" fdprocessedid="lnkopv">Đăng ký thông
+                <button class="w-100 btn btn-primary btn-lg" onclick="ajaxPostForm()" id="btn-addinfor" type="button" fdprocessedid="lnkopv">Đăng ký thông
                     tin</button>
+				<a class="w-100 btn btn-primary btn-lg" href="/home" id="btn-login" type="button" fdprocessedid="lnkopv">Đăng nhập</a>
         </form>
     </div>
 	

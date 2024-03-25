@@ -29,6 +29,8 @@ public class RegisterController {
 	@Autowired 
 	UserRepository userRepo;
 	
+	public static int idTemp;
+	
 	@RequestMapping(value = "/register",method = RequestMethod.GET)
 	public String index() {
 		return "registerpage";
@@ -39,6 +41,7 @@ public class RegisterController {
 		COMMON status=userService.reigisterAccount(user.getEmail(),user.getPassword());
 		if (status.equals(COMMON.REGISTER_STATUS_SUCESS)) {
 			User userRegistred=userRepo.findTopUserByEmail(user.getEmail());
+			idTemp=userRegistred.getId();
 			return ResponseEntity.ok(userRegistred.getId()+"");
 		}else if (status.equals(COMMON.REGISTER_STATUS_ERROR_DUPLICATE_MAIL)) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error by dupplicate mail");
@@ -48,6 +51,9 @@ public class RegisterController {
 	
 	@RequestMapping(value = "/addinfor/{id}",method = RequestMethod.GET)
 	public String returnAddInforFrom(@PathVariable int id) {
+		if(id!=idTemp) {
+			return "errorpage";
+		}
 		return "addinforpage";
 	}
 	
@@ -62,6 +68,9 @@ public class RegisterController {
 			@RequestParam String address2,
 			@RequestParam("avatar") MultipartFile avatar
 			) {
+		if(id!=idTemp) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("error_forbidden");
+		}
 		COMMON status=userService.reigisterInforUser(id,lastname,firstname,username,gender,birthday,address,address2,avatar);
 		if (status.equals(COMMON.ADDINFOR_STATUS_SUCCESS)) {
 			return ResponseEntity.ok("success");

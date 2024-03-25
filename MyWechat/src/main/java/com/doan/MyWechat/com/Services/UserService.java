@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.doan.MyWechat.com.Common.COMMON;
 import com.doan.MyWechat.com.Entities.User;
 import com.doan.MyWechat.com.Repositories.UserRepository;
+import com.doan.MyWechat.com.untils.Until;
 
 @Service
 public class UserService {
@@ -46,6 +47,7 @@ public class UserService {
 			byte[] digest = md.digest();
 			hashPassword=digest.toString();
 			newUser.setPassword(hashPassword);
+			newUser.setCreatedAt(Until.getDateTimeNow());
 			userRepo.save(newUser);
 		} catch (NoSuchAlgorithmException e) {
 			return COMMON.REGISTER_STATUS_ERROR ;
@@ -57,18 +59,17 @@ public class UserService {
 	
 	public COMMON reigisterInforUser(int id, String lastname, String firstname, String username, String gender,
 			String birthday, String address, String address2, MultipartFile avatar) {
-		
-		LocalDate now = LocalDate.now() ;
-		Date updateDate = java.sql.Date.valueOf( now );
 		User userInDB=userRepo.findObjectById(id);
 		userInDB.setFirstName(firstname);
 		userInDB.setLastName(lastname);
 		userInDB.setUsername(username);
 		userInDB.setGender(gender);
+		userInDB.setAddress1(address);
+		userInDB.setAddress2(address2);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate birthdayDate=LocalDate.parse(birthday,formatter);
 		userInDB.setBirthDay(java.sql.Date.valueOf(birthdayDate));
-		userInDB.setUpdatedAt(updateDate);
+		userInDB.setUpdatedAt(Until.getDateTimeNow());
 		try {
 			imgServices.addImage(userInDB, avatar);
 			userRepo.save(userInDB);

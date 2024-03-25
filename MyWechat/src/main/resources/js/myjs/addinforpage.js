@@ -1,21 +1,12 @@
+var locationPathName=location.pathname;
 
-
-
-
-function createUserName(){
-    const firstName=document.getElementById('firstName').value;
-    const lastName=document.getElementById('lastName').value;
-    const firstNameLastName=document.getElementById('firstNameLastName');
-    const lastNameFirstName=document.getElementById('lastNameFirstName');
-    firstNameLastName.value=firstName+lastName;
-    lastNameFirstName.value=lastName+firstName;
-
-}
-
-function ajaxPost(){
+function ajaxPostForm(){
 	var avatarInput = document.getElementById('avatar');
+	var txtGuild= document.getElementById('text-guildline');
+	var btnAddinfor= document.getElementById('btn-addinfor');
+	var btnLogin= document.getElementById('btn-login');
 	var formData = new FormData();
-			
+	
 	formData.append('lastname', document.getElementById('lastname').value);
     formData.append('firstname', document.getElementById('firstname').value);
     formData.append('username', document.getElementById('username').value);
@@ -34,8 +25,31 @@ function ajaxPost(){
         processData: false,
 		data:formData,
 		success:function (result){
-			console.log("here");
+			console.log(result);
+			if(result=="success"){
+				txtGuild.textContent="Bạn đã thêm thông tin thành công,hãy đăng nhập lần đầu tiên nhé !";
+				btnLogin.style.display="block";
+				btnAddinfor.style.display="none";
+			}else if(result=="error_forbidden"){
+				hrefOld=window.location.href;
+				hrefNew=hrefOld.substring(0, 21)+"/erorrforbidden";
+				window.location.href=hrefNew;
+			}else{
+				hrefOld=window.location.href;
+				hrefNew=hrefOld.substring(0, 21)+"/erorr";
+				window.location.href=hrefNew;
+			}
+			
 		} 
 
+	})
+}
+function loginNow(){
+	hrefOld=window.location.href;
+	id=hrefOld.substring(31, 32);
+	$.ajax({
+		method:"GET",
+		contentType: false,
+		url:"/home"
 	})
 }

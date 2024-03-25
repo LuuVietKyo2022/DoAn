@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel='stylesheet' type='text/css' media='screen' href='../css/mycss/loginpage.css'>
-    <script src="jquery-3.7.1.min.js"></script>
+    <script src="../js/jquery/jQuery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -30,15 +30,16 @@
         <h1 class="h3 mb-3 fw-normal">Hãy đăng nhập !</h1>
     
         <div class="form-floating">
-          <input type="email" class="form-control" id="floatingInput" name="username" onchange="" placeholder="Email" fdprocessedid="ifcdng">
-          <label for="floatingInput">Email</label>
+          <input type="email" class="form-control" id="email" onkeyup="checkVaidateEmail()" placeholder="Email" fdprocessedid="ifcdng">
+          <label for="email">Email</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" name="password" onchange="" maxlength="12" placeholder="Password" fdprocessedid="0rh6mg">
-          <label for="floatingPassword">Mật khẩu</label>
+          <input type="password" class="form-control" id="password" onchange="" maxlength="12" placeholder="Password" fdprocessedid="0rh6mg">
+          <label for="password">Mật khẩu</label>
           <i id="btn-showpass" onclick="showOrHidePass()" class="bi bi-eye-slash-fill"></i>
         </div>
-        <button class="btn btn-primary w-100 py-2" type="submit" fdprocessedid="ced5sd">Đăng nhập</button>
+		<p class="mb-2 " id="text-error" ></p>
+        <button class="btn btn-primary w-100 py-2" id="btn-login" onclick="login()" type="button" fdprocessedid="ced5sd">Đăng nhập</button>
         <p class="mt-5 mb-3 text-body-secondary">Bạn chưa có tài khoản hãy <a href="/register">đăng ký</a> nhé !</p>
     </form>
     <script src="../js/myjs/loginpage.js"></script>

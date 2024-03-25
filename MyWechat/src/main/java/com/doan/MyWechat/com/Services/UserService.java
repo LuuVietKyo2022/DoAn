@@ -12,6 +12,10 @@ import java.util.Calendar;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.xml.bind.DatatypeConverter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Service;
@@ -33,19 +37,17 @@ public class UserService {
 		User newUser = new User();
 		User oldUser = userRepo.findTopUserByEmail(email);
 		if(oldUser!=null) {
-			System.out.println(COMMON.REGISTER_STATUS_ERROR_DUPLICATE_MAIL +" : "+COMMON.REGISTER_STATUS_ERROR_DUPLICATE_MAIL.getValue());
 			return COMMON.REGISTER_STATUS_ERROR_DUPLICATE_MAIL ;
 		}
 		newUser.setEmail(email);
 		newUser.setUsername(email);
 		//hashPassword
-		String hashPassword="";
+		
 		try {
-			MessageDigest md;
-			md = MessageDigest.getInstance("MD5");
+			MessageDigest md = MessageDigest.getInstance("MD5");
 			md.update(password.getBytes());
 			byte[] digest = md.digest();
-			hashPassword=digest.toString();
+			String hashPassword=DatatypeConverter.printHexBinary(digest).toUpperCase();
 			newUser.setPassword(hashPassword);
 			newUser.setCreatedAt(Until.getDateTimeNow());
 			userRepo.save(newUser);
@@ -80,6 +82,33 @@ public class UserService {
 		}
 		return COMMON.ADDINFOR_STATUS_ERROR;
 		
+	}
+
+	public COMMON login(HttpServletRequest request, String email, String password) {
+		User userInDB =userRepo.findTopUserByEmail(email);
+		if(userInDB==null) {
+			return COMMON.LOGIN_BY_NEW_EMAIL;
+		}else {
+			try {
+				MessageDigest md=MessageDigest.getInstance("MD5");
+				md.update(password.getBytes());
+				byte[] digest= md.digest();
+				String hashPassword=DatatypeConverter.printHexBinary(digest).toUpperCase();
+				if(hashPassword.equals(userInDB.getPassword())){
+					HttpSession session = request.getSession();
+					session.setAttribute("user", userInDB);
+					return COMMON.LOGIN_SUCCESS;
+				}else {
+					return COMMON.LOGIN_ERROR_INVALID_PASSWORD;
+				}
+			} catch (NoSuchAlgorithmException e) {
+				
+				e.printStackTrace();
+				return COMMON.LOGIN_ERROR_ALOTHIRM;
+			}
+			
+		}
+	
 	}
 
 }

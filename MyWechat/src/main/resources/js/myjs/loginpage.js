@@ -1,5 +1,5 @@
 function showOrHidePass(){
-    const inputPassword = document.getElementById('floatingPassword');
+    const inputPassword = document.getElementById('password');
     const ishowOrHidePass=document.getElementById('btn-showpass');
     if(ishowOrHidePass.classList.contains('bi-eye-slash-fill')){
         inputPassword.setAttribute("type","text");
@@ -11,22 +11,68 @@ function showOrHidePass(){
         ishowOrHidePass.classList.add("bi-eye-slash-fill");
     }
 }
-// function rememberLogin(){
-//     const checkBoxRemember = document.getElementById('flexCheckDefault');
-//     var password =document.getElementById('floatingPassword').value; 
-//     var username=document.getElementById('floatingInput').value;
-//         if(checkBoxRemember.checked){
-//             //const hasedPassword=sha256(password);
-//             localStorage.setItem('username',username);
-//             localStorage.setItem('password',password);
-//         }else{
-//             localStorage.clear();
-//         }
-    
-// }
-// function inputUserNameOrPass(){
-//     var password =document.getElementById('floatingPassword') 
-//     var username=document.getElementById('floatingInput');
-//     username.value=localStorage.getItem('username');
-//     password.value=localStorage.getItem('password');
-// }
+function checkVaidateEmail(){
+	const email = document.getElementById('email').value;
+	const btnLogin= document.getElementById('btn-login');
+	const textError= document.getElementById('text-error');
+	var validateEmail=false;
+	
+	if(email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))
+	{
+		validateEmail=true;
+	}
+	if(email!=""){
+	if(validateEmail){
+		btnLogin.disabled=false;
+		textError.innerText="";
+		textError.style.display="none";
+	}else{
+		textError.innerText="Email bạn nhập đang sai định dạng !";
+		textError.style.display="block";
+		btnLogin.disabled=true;
+	}
+	}else{
+		btnLogin.disabled=false;
+		textError.innerText="";
+		textError.style.display="none";
+	}
+	
+}
+function login(){
+	var formData = new FormData();
+	formData.append("email",document.getElementById("email").value);
+	formData.append("password",document.getElementById("password").value);
+	const textError= document.getElementById('text-error');
+	$.ajax({
+		type:"POST",
+		url:"/login",
+		data:formData,
+		processData:false,
+		typeData:false,
+		contentType:false,
+		success:function(result){
+			if(result=="success"){
+				hrefOld=window.location.href;
+				hrefNew=hrefOld.substring(0, 21)+"/home";
+				window.location.href=hrefNew;
+			}
+		},
+		error:function(result){
+			console.table(result);
+			if(result.responseText=="login by new email"){
+				textError.innerText="Email bạn nhập không tồn tại !";
+				textError.style.display="block";
+			}else if(result.responseText=="wrong password"){
+				textError.innerText="Sai mật khẩu";
+				textError.style.display="block";
+			}else{
+				textError.innerText="Có lỗi hệ thống hãy thử lại sau nhé !";
+				textError.style.display="block";
+			}
+			
+			
+		}
+		
+	})
+}
+

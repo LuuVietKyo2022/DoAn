@@ -112,9 +112,9 @@ function ajaxPost(){
 			if(result!=null){
 			textSuccces.innerText="Bạn đã đăng ký thành công hãy thêm thông tin để kết nối với mọi người !";
 			textSuccces.style.display="block";
-			inputPassword.value="";
-			repeatPassword.value="";
-			email.value="";
+			//inputPassword.value="";
+			//repeatPassword.value="";
+			//email.value="";
 			btnAddInfo.style.display="block";
 			btnRegister.style.display="none";
 			textSuggest.style.display="none";

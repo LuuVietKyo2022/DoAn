@@ -94,7 +94,7 @@
 
                 <button class="w-100 btn btn-primary btn-lg" onclick="ajaxPostForm()" id="btn-addinfor" type="button" fdprocessedid="lnkopv">Đăng ký thông
                     tin</button>
-				<a class="w-100 btn btn-primary btn-lg" href="/home" id="btn-login" type="button" fdprocessedid="lnkopv">Đăng nhập</a>
+				<a class="w-100 btn btn-primary btn-lg" href="/login" id="btn-login" type="button" fdprocessedid="lnkopv">Đăng nhập</a>
         </form>
     </div>
 	

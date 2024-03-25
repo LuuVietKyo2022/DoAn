@@ -13,3 +13,7 @@
     top: -33px;
     left: 263px;
 }
+#text-error{
+	display:none;
+	color:red;
+}

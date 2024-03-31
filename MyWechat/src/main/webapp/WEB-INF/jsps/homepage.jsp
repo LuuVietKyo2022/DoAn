@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- import JSTL -->
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -12,13 +14,8 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel='stylesheet' type='text/css' media='screen' href='../css/mycss/homepage.css'>
-    <script src="jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
+    <script src="../js/jquery/jQuery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </head>
 
@@ -61,7 +58,7 @@
                 </form>
                 <div class="dropdown text-end">
                     <a href="/personal" class="d-block link-body-emphasis text-decoration-none ">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                        <img src="/images/${user.avatar}"  alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
                 </div>
             </div>
@@ -125,56 +122,166 @@
 
             </div>
         </div>
+		
         <div class="statusForm">
-            <div class="modal fade  modal-sheet  bg-body-secondary p-4 py-md-5" id="modal-createstatus" tabindex="-1"
-                style="display: none ;" role="dialog">
+            <div class="modal  modal-sheet  bg-body-secondary p-4 py-md-5" id="modal-createstatus" tabindex="-1"
+                style="" role="dialog"  >
                 <div class="modal-dialog">
                     <div class="modal-content rounded-4 shadow">
-                        <div class="modal-body p-4">
-                            <h2 class="fw-bold mb-0">Tạo bài viết</h2>
+						<div class="modal-header d-flex flex-row">
+							<h2>Tạo bài viết </h2>
+							<button type="button" data-bs-dismiss="modal" class="btn btn-light"><i class="bi bi-x-lg"></i></button>
+						</div> 
+                        <div class="modal-body">
+							<div class="d-flex flex-row mb-2" >
+                    			<img src="../images/${user.avatar}" alt="mdo" width="40" height="40" class=" img-normal  rounded-circle">
+                    			<div class="d-flex flex-column scope">
+                        		<h5 class="card-title" id="card-title">${user.username}</h5>
+                        			<select id="select-scope" class="form-select select-scope" >
+  										<option selected value="1">Công khai</option>
+  										<option value="2">Bạn bè</option>
+  										<option value="3">Chỉ mình tôi</option>
+									</select>
+                   				 </div>
+                			</div>
                             <div class="form-floating mb-3">
-                                <input type="text" style="height: 120px;" class="form-control rounded-3"
-                                    id="floatingInput" placeholder="" fdprocessedid="h0hky">
-                                <label for="floatingInput">Bạn đang nghĩ gì thế ?</label>
+                                <input type="text" style="height: 160px;" class="form-control rounded-3"
+                                    id="inputStatus" placeholder="" fdprocessedid="h0hky">
+                                <label for="inputStatus">Bạn đang nghĩ gì thế ?</label>
                             </div>
+							<div id="div-showimage" class="show-image">
+							</div>
+							<div id="div-tagfriend">
+							<nav class="navbar bg-body-tertiary">
+  								<div class="container-fluid">
+    							<form class="d-flex" role="search">
+      							<input class="form-control me-2" type="search" placeholder="Tìm kiếm bạn bè" aria-label="Search">
+      							<button class="btn btn-primary" type="submit">Search</button>
+   	 							</form>
+  								</div>
+							</nav>
+							<div id="list-taged">
 
+							</div>
+							<h6>Gợi ý</h6>
+							<div class="list-group list-resultsearch">
+  								<div  class="list-group-item list-group-item-action"> <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        class="img-normal rounded-circle"> A second link item</div>
+  								<div  class="list-group-item list-group-item-action"> <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        class="img-normal rounded-circle"> A second link item</div>
+  								<div  class="list-group-item list-group-item-action"> <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        class="img-normal rounded-circle"> A second link item</div>
+  								<div  class="list-group-item list-group-item-action"> <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        class="img-normal rounded-circle"> A second link item</div>
+							</div>
+							</div>
+							<div class="" id="div-templatebackground">
+							<img src="../images/background/background1.avif" id="background1" onclick="setBackgroundStatus('background1')" class="img-template" width="40">
+							<img src="../images/background/background2.avif" id="background2" onclick="setBackgroundStatus('background2')" class="img-template" width="40">
+							<img src="../images/background/background3.avif" id="background3" onclick="setBackgroundStatus('background3')" class="img-template" width="40">
+							<img src="../images/background/background4.avif" id="background4" onclick="setBackgroundStatus('background4')" class="img-template" width="40">
+							<img src="../images/background/background5.avif" id="background5" onclick="setBackgroundStatus('background5')" class="img-template" width="40">
+							<img src="../images/background/background6.avif" id="background6" onclick="setBackgroundStatus('background6')" class="img-template" width="40">
+							<img src="../images/background/background7.avif" id="background7" onclick="setBackgroundStatus('background7')" class="img-template" width="40">
+							</div>
+							<div id="div-emoteaction" style="height: 180px;" >
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+  								<li class="nav-item" role="presentation">
+    								<button class="nav-link active" id="home-tab" onclick="openListEmotesOrListAction('true')" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Cảm xúc</button>
+  								</li>
+  								<li class="nav-item" role="presentation">
+    								<button class="nav-link" id="profile-tab" onclick="openListEmotesOrListAction('false')" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Hành động</button>
+  								</li>
+							</ul>
+								<div class="d-flex" id="div-listEmotes">
+  								 
+								<ul class="list-group ul-emotes" >
+  									<li class="li-emotes" id="emote1" onclick="clickEmote('emote1')" ><i class="bi bi-emoji-laughing" style="color:#f0ec0e"></i> Hạnh phúc</li>
+  									<li class="li-emotes" id="emote2" onclick="clickEmote('emote2')"  ><i class="bi bi-emoji-heart-eyes" style="color:#f0ec0e"></i> Yêu thích</li>
+  									<li class="li-emotes" id="emote3" onclick="clickEmote('emote3')"  ><i class="bi bi-emoji-kiss" style="color:#f0ec0e" ></i> Thích</li>
+  									<li class="li-emotes" id="emote4" onclick="clickEmote('emote4')"  ><i class="bi bi-emoji-sunglasses" style="color:#f0ec0e" ></i> Hãnh diện</li>
+  									<li class="li-emotes" id="emote5" onclick="clickEmote('emote5')"  ><i class="bi bi-emoji-smile" style="color:#f0ec0e"></i> Vui vẻ</li>
+								</ul>
+								<ul class="list-group ul-emotes" >
+  									<li class="li-emotes" id="emote6" onclick="clickEmote('emote6')"  ><i class="bi bi-emoji-angry" style="color:#f0ec0e"></i> Tức giận</li>
+  									<li class="li-emotes" id="emote7" onclick="clickEmote('emote7')"  ><i class="bi bi-emoji-expressionless" style="color:#f0ec0e"></i> Không hài lòng</li>
+  									<li class="li-emotes" id="emote8" onclick="clickEmote('emote8')"  ><i class="bi bi-arrow-through-heart" style="color:#f0ec0e"></i> Muốn yêu</li>
+  									<li class="li-emotes" id="emote9" onclick="clickEmote('emote9')"  ><i class="bi bi-emoji-dizzy" style="color:#f0ec0e"></i> Ngỡ ngàng</li>
+  									<li class="li-emotes" id="emote10" onclick="clickEmote('emote10')"  ><i class="bi bi-emoji-frown" style="color:#f0ec0e"></i> Buồn</li>
+								</ul>
+								</div>
+								
+								<div class="d-none" id="div-listActions">
+  								 
+								<ul class="list-group ul-emotes" >
+  									<li class="li-emotes" id="emote11" onclick="clickEmote('emote11')"  ><i class="bi bi-sunglasses" style="color:#f0ec0e"></i> Xem phim</li>
+  									<li class="li-emotes" id="emote12" onclick="clickEmote('emote12')"  ><i class="bi bi-cup-straw" style="color:#f0ec0e"></i> Uống</li>
+  									<li class="li-emotes" id="emote13" onclick="clickEmote('emote13')"  ><i class="bi bi-controller" style="color:#f0ec0e" ></i> Chơi game</li>
+  									<li class="li-emotes" id="emote14" onclick="clickEmote('emote14')"  ><i class="bi bi-camera-reels" style="color:#f0ec0e" ></i> Quay phim</li>
+  									<li class="li-emotes" id="emote15" onclick="clickEmote('emote15')"  ><i class="bi bi-palette" style="color:#f0ec0e"></i> Vẽ tranh</li>
+								</ul>
+								<ul class="list-group ul-emotes" >
+  									<li class="li-emotes" id="emote16" onclick="clickEmote('emote16')"  ><i class="bi bi-mortarboard" style="color:#f0ec0e"></i> Dự lễ tốt nghiệp</li>
+  									<li class="li-emotes" id="emote17" onclick="clickEmote('emote17')"  ><i class="bi bi-music-note-beamed" style="color:#f0ec0e"></i> Nghe nhạc</li>
+  									<li class="li-emotes" id="emote18" onclick="clickEmote('emote18')"  ><i class="bi bi-cart" style="color:#f0ec0e"></i> Mua sắm</li>
+  									<li class="li-emotes" id="emote19" onclick="clickEmote('emote19')"  ><i class="bi bi-book" style="color:#f0ec0e"></i> Đọc sách</li>
+  									<li class="li-emotes" id="emote20" onclick="clickEmote('emote20')"  ><i class="bi bi-binoculars" style="color:#f0ec0e"></i> Khám phá</li>
+								</ul>
+								</div>					
+								</div>
+							
                             <ul class="d-grid d-flex flex-row gap-4 my-5 list-unstyled small">
-                                <li class="gap-4 status-icons">
-                                    <i class="bi bi-image"></i>
+								<div class="form-control d-flex flex-row">
+                                <li class=" status-icons">
+                                    <i style="color:#41B35D" id="i-images" onclick="focusImageInput()" class="bi bi-image"></i>
+									<input type="file" style="display:none"  id="inputImages">
                                 </li>
-                                <li class="gap-4 status-icons">
-                                    <i class="bi bi-person-fill-add"></i>
+                                <li class="status-icons">
+                                    <i style="color:#1771E6" onclick="openOrCloseTagFriend()" class="bi bi-person-fill-add"></i>
                                 </li>
-                                <li class="gap-4 status-icons">
-                                    <i class="bi bi-emoji-smile"></i>
+                                <li class="status-icons">
+                                    <i onclick="openListEmoteAction()" style="color:#EAB026" id="i-emotes" class="bi bi-emoji-smile"></i>
                                 </li>
-                                <li class="gap-4 status-icons">
-                                    <i class="bi bi-geo-alt"></i>
+								<!--
+                                <li class="status-icons">
+                                    <i style="color:#E94F3A" class="bi bi-geo-alt"></i>
                                 </li>
+								-->
+								<li class="status-icons">
+                                    <img onclick="openSetBackgroundTemplate()" src="../images/icon-tab/Aa_square-2x.png">
+                                </li>
+								<!--
+								<li class="status-icons">
+                                    <i style="" class="bi bi-three-dots"></i>
+                                </li>
+								-->
                             </ul>
-
+							</div>
+						<div class="modal-footer">
+                            <button type="button" onclick="clickPostStatus()" class="btn btn-lg btn-primary  w-100" id="btn-close-createstatus"
+                                 >Đăng</button>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-lg btn-primary mt-5 w-100" id="btn-close-createstatus"
-                                data-dismiss="modal">Đăng</button>
                         </div>
+						
+                        
                     </div>
                 </div>
             </div>
+			
         </div>
-
+		
         <div class="list-card">
             <div class="card card-status d-flex flex-row">
 
                 <div class=" d-flex flex-row card-body card-body-avatar">
                     <a href="/home">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        <img src="/images/${user.avatar}" alt="mdo" width="40" height="40"
                             class="img-miniavatar rounded-circle">
                     </a>
 
                     <input type="text" class="form-control inputstatus" data-bs-toggle="modal"
                         data-bs-target="#modal-createstatus" id="inputCreateStatus"
-                        placeholder="Chia sẻ cảm xúc của bạn!">
+                        placeholder="Chia sẻ cảm xúc của bạn nhé, ${user.username} !">
 
                 </div>
             </div>
@@ -185,7 +292,7 @@
                     <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
                         class="img-normal rounded-circle">
                     <div class="d-flex flex-column">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title" >Card title</h5>
                         <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
                     </div>
                 </div>
@@ -371,7 +478,10 @@
                     
                 </div>
             </div>
-
+			<div class="d-none">
+				<input type="hidden" id="userid" value="${user.id}" />
+			</div>
+			
             <script src="../js/myjs/homepage.js"></script>
 </body>
 

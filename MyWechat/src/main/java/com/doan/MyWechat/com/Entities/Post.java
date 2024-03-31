@@ -22,15 +22,23 @@ public class Post {
 	@Column(length = 2000)
 	private String content;
 
-	@Column
-	private String image;
+
 
 	@Column(name="created_at")
 	private Date createdAt;
 	
 	@Column(name="updated_at")
 	private Date updatedAt;
-
+	
+	@Column
+	private int scope;
+	
+	@Column(name="post_images")
+	private String postImages;
+	
+	@Column(name="post_emote")
+	private String postEmote;
+	
 	public int getId() {
 		return id;
 	}
@@ -55,13 +63,7 @@ public class Post {
 		this.content = content;
 	}
 
-	public String getImage() {
-		return image;
-	}
 
-	public void setImage(String image) {
-		this.image = image;
-	}
 
 	public Date getCreatedAt() {
 		return createdAt;
@@ -79,13 +81,47 @@ public class Post {
 		this.updatedAt = updatedAt;
 	}
 
-	public Post(int id, int userId, String content, String image, Date createdAt, Date updatedAt) {
+	
+
+	public int getScope() {
+		return scope;
+	}
+
+	public void setScope(int scope) {
+		this.scope = scope;
+	}
+
+	public String getPostImages() {
+		return postImages;
+	}
+
+	public void setPostImages(String postImages) {
+		this.postImages = postImages;
+	}
+
+	public String getPostEmote() {
+		return postEmote;
+	}
+
+	public void setPostEmote(String postEmote) {
+		this.postEmote = postEmote;
+	}
+
+	
+	
+
+
+	public Post(int id, int userId, String content, Date createdAt, Date updatedAt, int scope, String postImages,
+			String postEmote) {
+		super();
 		this.id = id;
 		this.userId = userId;
 		this.content = content;
-		this.image = image;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+		this.scope = scope;
+		this.postImages = postImages;
+		this.postEmote = postEmote;
 	}
 
 	public Post() {

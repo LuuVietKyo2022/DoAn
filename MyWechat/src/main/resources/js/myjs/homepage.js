@@ -142,7 +142,6 @@ var listImage=[];
     		img.id=id;
     		img.classList="images";
     		divshowImage.appendChild(img);
-    		formData.append("img"+indexImg,reader.result);
     		indexImg++;
     		isFirstImg=false;
     		const iconX=document.createElement("i");
@@ -162,8 +161,6 @@ var listImage=[];
 						divshowImage.removeChild(img);
 						img.style.display="none";
 						iconX.style.display="none";
-						formData.remove("img"+indexImg,reader.result);
-    					indexImg--;
 						break;
 					}
 					
@@ -269,23 +266,34 @@ function clickPostStatus(){
 	const selectScope=document.getElementById("select-scope");
 	formData.append("userId",inputUserId.value);
 	if(listImage.length!=0){
-		formData.append("postImages",listImage);
+		for(var img of listImage){
+			formData.append("postImages",img);
+		}
+		
+		
 	}else{
 		formData.append("postImages",null);
 	}
+	console.table(listImage);
 	inputContent.value!="" ? formData.append("content",inputContent.value) : formData.append("content","");
 	backgroundId!=undefined ? formData.append("backgroundId",backgroundId) : formData.append("backgroundId","");
 	emoteId!=undefined ? formData.append("emoteId",emoteId) : formData.append("emoteId","");
 	formData.append("scope",selectScope.value);
-	console.log(formData);
+	//console.log(formData);
 	$.ajax({
 		type:"POST",
 		url:"/createstatus",
 		data:formData,
 		processData:false,
 		contentType:false,
-		succes:function(result){
-			console.table(result);
+		success:function(result){
+			// Cài đặt URL mới
+			window.location.href = "/home";
+
+			// Tải lại trang
+			window.location.reload();
+
+			
 		},
 		error:function(result){
 			console.table(result);

@@ -1,6 +1,7 @@
 package com.doan.MyWechat.com.Entities;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Posts")
+@Table(name="posts")
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +26,10 @@ public class Post {
 
 
 	@Column(name="created_at")
-	private Date createdAt;
+	private Timestamp createdAt;
 	
 	@Column(name="updated_at")
-	private Date updatedAt;
+	private Timestamp updatedAt;
 	
 	@Column
 	private int scope;
@@ -38,6 +39,9 @@ public class Post {
 	
 	@Column(name="post_emote")
 	private String postEmote;
+	
+	@Column(name="post_background")
+	private String postBackground;
 	
 	public int getId() {
 		return id;
@@ -65,19 +69,19 @@ public class Post {
 
 
 
-	public Date getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Date getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
@@ -107,12 +111,18 @@ public class Post {
 		this.postEmote = postEmote;
 	}
 
-	
-	
+	public String getPostBackground() {
+		return postBackground;
+	}
+
+	public void setPostBackground(String postBackground) {
+		this.postBackground = postBackground;
+	}
 
 
-	public Post(int id, int userId, String content, Date createdAt, Date updatedAt, int scope, String postImages,
-			String postEmote) {
+
+	public Post(int id, int userId, String content, Timestamp createdAt, Timestamp updatedAt, int scope, String postImages,
+			String postEmote, String postBackground) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -122,6 +132,7 @@ public class Post {
 		this.scope = scope;
 		this.postImages = postImages;
 		this.postEmote = postEmote;
+		this.postBackground = postBackground;
 	}
 
 	public Post() {

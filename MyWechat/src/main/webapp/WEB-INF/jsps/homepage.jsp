@@ -58,7 +58,7 @@
                 </form>
                 <div class="dropdown text-end">
                     <a href="/personal" class="d-block link-body-emphasis text-decoration-none ">
-                        <img src="/images/${user.avatar}"  alt="mdo" width="32" height="32" class="rounded-circle">
+                        <img src="${user.avatar}"  alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
                 </div>
             </div>
@@ -272,7 +272,6 @@
 		
         <div class="list-card">
             <div class="card card-status d-flex flex-row">
-
                 <div class=" d-flex flex-row card-body card-body-avatar">
                     <a href="/home">
                         <img src="/images/${user.avatar}" alt="mdo" width="40" height="40"
@@ -285,62 +284,53 @@
 
                 </div>
             </div>
-
-
-            <div class="card ">
-                <div class="d-flex flex-row">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
-                        class="img-normal rounded-circle">
-                    <div class="d-flex flex-column">
-                        <h5 class="card-title" >Card title</h5>
-                        <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
-                    </div>
-                </div>
-                <div class="card-body">
-
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-
-                </div>
-            </div>
-
-
-
-            <div class="card ">
-                <div class="d-flex flex-row">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
-                        class="img-normal rounded-circle">
-                    <div class="d-flex flex-column">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
-                    </div>
-                </div>
-                <div class="card-body">
-
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-
-                </div>
-
-            </div>
-
+            
+			<c:forEach var="post" items="${listPost}"> 
             <div class="card">
                 <div class="d-flex flex-row">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                    <img src="${post[1]}" alt="mdo" width="40" height="40"
                         class=" img-normal  rounded-circle">
                     <div class="d-flex flex-column">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
+                        <h5 class="card-title d-flex">${post[0]}
+						<c:if test="${!empty post[4]}">
+							${post[4]}
+						</c:if>
+						</h5>
+						
+                        <p class="card-text" ><small class="text-body-secondary">${post[6]}</small></p>
                     </div>
                 </div>
 
                 <div class="card-body">
-
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-
+				<c:choose>
+					<c:when test="${!empty  post[5]}">
+						<div class="div-content-post backgroundimage-post" style="background-image:url(${post[5]})">
+                    	<p id="card-content" class="card-text">${post[2]}</p>
+						</div>
+					</c:when>
+					<c:when test="${empty  post[5]}">
+						<div class="div-content-post">
+                    	<p id="card-content" class="card-text">${post[2]}</p>
+						</div>
+					</c:when>
+				</c:choose>
                 </div>
-                <img src="..." class="card-img-bottom" alt="...">
+				<c:choose>  
+    				<c:when test="${post[3] != null &&  post[3].size() gt 1}">  
+					<div class="div-postImgs d-flex">
+					<c:forEach var="urlImg" items="${post[3]}">
+						<img src="${urlImg}"  class="rounded img-posts  " alt="">
+					</c:forEach>
+					</div>
+					</c:when>
+					<c:when test="${post[3] != null &&  post[3].size() gt 0}">  
+					<div class="div-postImgs d-flex">
+					<c:forEach var="urlImg" items="${post[3]}">
+						<img src="${urlImg}"  class="rounded  img-post" alt="">
+					</c:forEach>
+					</div>
+					</c:when>
+				</c:choose>
                 <div class="card-footer">
                     <div class="d-flex flex-row">
                         <a class="a-footer-card" href="#"><i class="bi bi-heart-fill" style="color: red;"></i>18</a>
@@ -407,6 +397,7 @@
                 </div>
 
             </div>
+			</c:forEach> 
             </div>
             <div  class=" list-messages flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
                 <div id="div-listmessages" class="list-group  group-messages" >

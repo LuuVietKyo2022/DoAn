@@ -29,7 +29,7 @@
         </div>
         <h1 class="h3 mb-3 fw-normal">Hãy đăng nhập !</h1>
     
-        <div class="form-floating">
+        <div class="form-floating mb-3">
           <input type="email" class="form-control" id="email" onkeyup="checkVaidateEmail()" placeholder="Email" fdprocessedid="ifcdng">
           <label for="email">Email</label>
         </div>

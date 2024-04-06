@@ -153,6 +153,7 @@ margin-left: 0;
 
 .btn-footer-card{
     color: black;
+ 
     width: 220px;
 }
 .btn-footer-card > i{
@@ -304,4 +305,32 @@ margin-left: 0;
 #div-tagfriend{
 	display:none;
 }
+.div-postImgs{
+	flex-wrap:wrap;
+}
+.img-posts{
+	display:flex;
+	width: calc(100%/2);
+	
+}
 
+.img-post{
+	display:flex;
+	width: 100%;
+	
+}
+.backgroundimage-post{
+	margin-left:15%;
+	width:430px;
+	height:620px;
+	justify-content:center;
+	display:flex;
+	align-items:center;
+	font-weight:bold;
+	font-size:28px;
+}
+.card-title > p{
+	margin-bottom: 0;
+	margin-left: 8px;
+
+	}

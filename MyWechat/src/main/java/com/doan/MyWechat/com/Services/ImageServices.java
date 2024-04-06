@@ -2,13 +2,17 @@ package com.doan.MyWechat.com.Services;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.doan.MyWechat.com.Entities.Post;
 import com.doan.MyWechat.com.Entities.User;
+
+import antlr.StringUtils;
 
 @Service
 public class ImageServices {
@@ -51,11 +55,29 @@ public class ImageServices {
 			// lưu avatar vào đường dẫn trên
 			avatar.transferTo(new File(pathToAvatar));
 
-			a.setAvatar("/userImages/avatar/" + fileName);
+			a.setAvatar("../images/userImages/avatar/" + fileName);
 		}
 		return a;
 
 		
+	}
+	
+	@Transactional
+	public Post addListImagesToPost(Post a,MultipartFile[] listImages) throws IllegalStateException, IOException {
+		StringBuilder listUrlImages=new StringBuilder();
+		if(!isEmptyUploadFile(listImages)) {
+			for (MultipartFile file : listImages) {
+				String fileName = getUniqueUploadFileName(file.getOriginalFilename());
+				String pathStore = "E:/ProjectDoAn/DoAn/images/postImages/" + fileName;
+				file.transferTo(new File(pathStore));
+				listUrlImages.append("../images/postImages/");
+				listUrlImages.append(fileName);
+				listUrlImages.append(";");
+			}
+		}
+		System.out.println(listUrlImages);
+		a.setPostImages(listUrlImages.toString());
+		return a;
 	}
 	
 }

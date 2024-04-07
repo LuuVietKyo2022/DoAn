@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.doan.MyWechat.com.Common.COMMON;
+import com.doan.MyWechat.com.Controller.LoginController;
 import com.doan.MyWechat.com.Entities.User;
 import com.doan.MyWechat.com.Repositories.UserRepository;
 import com.doan.MyWechat.com.untils.Until;
@@ -97,6 +98,7 @@ public class UserService {
 				if(hashPassword.equals(userInDB.getPassword())){
 					HttpSession session = request.getSession();
 					session.setAttribute("user", userInDB);
+					LoginController.idUserLogin=userInDB.getId();
 					return COMMON.LOGIN_SUCCESS;
 				}else {
 					return COMMON.LOGIN_ERROR_INVALID_PASSWORD;

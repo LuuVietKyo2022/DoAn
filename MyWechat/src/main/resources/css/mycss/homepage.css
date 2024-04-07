@@ -164,9 +164,11 @@ margin-left: 0;
     
 }
 .a-footer-card{
+	
     text-decoration: none;
     color: black;
-    margin-right: 12px;
+    width: 300px;
+    flex-wrap: nowrap;
 }
 .detail-comment{
     background-color: #F0F2F5;
@@ -186,7 +188,7 @@ margin-left: 0;
 .my-comment>input{
     width: 90%;
 }
-#i-send {
+.i-send {
     margin-left: 12px;
     font-size: 24px;
 }

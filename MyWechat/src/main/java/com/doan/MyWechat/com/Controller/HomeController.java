@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doan.MyWechat.com.Common.COMMON;
 import com.doan.MyWechat.com.Entities.Post;
+import com.doan.MyWechat.com.Services.LikeService;
 import com.doan.MyWechat.com.Services.PostService;
 
 
@@ -29,11 +30,11 @@ import com.doan.MyWechat.com.Services.PostService;
 public class HomeController {
 	@Autowired
 	PostService postService;
-	
+	@Autowired
+	LikeService likeService;
 	@RequestMapping(value ="/home")
 	public String index(Model model) {
-		List<Map<String,String>> listPosts= postService.getListPost();
-		
+		List<Map<String,String>> listPosts= postService.getListPost(LoginController.idUserLogin);
 		model.addAttribute("listPost", listPosts);
 		
 		 return "homepage";
@@ -48,8 +49,19 @@ public class HomeController {
 								@RequestParam int scope) {  
 		COMMON status=postService.createPost(userId,postImages,content,backgroundId,emoteId,scope);
 		if(status.equals(COMMON.CREATE_POST_SUCESS)) {
-			return ResponseEntity.ok("succes");
+			return ResponseEntity.ok("success");
 		}else return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error");
+	}
+	
+	@PostMapping(value ="/likepost")
+	public ResponseEntity<String> likePost(Model model,@RequestParam String postId,@RequestParam String userId,@RequestParam String isLike) {  
+		int userLoginLike =likeService.likePost(postId,userId,isLike);
+		if(userLoginLike==1) {
+			return ResponseEntity.ok("userloginlike");
+		}
+		return ResponseEntity.ok("userlogindontlike");
+		
+		
 	}
 
 	

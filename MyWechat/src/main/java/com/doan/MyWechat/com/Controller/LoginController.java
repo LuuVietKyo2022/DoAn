@@ -15,8 +15,10 @@ import com.doan.MyWechat.com.Services.UserService;
 
 @Controller
 public class LoginController {
+	public static int idUserLogin;
 	@Autowired
 	UserService userService;
+	
 	@RequestMapping(value = "/login",method = RequestMethod.GET)
 	public String index() {
 		return "loginpage";
@@ -25,6 +27,7 @@ public class LoginController {
 	public ResponseEntity<String> login(HttpServletRequest request,@RequestParam String email,@RequestParam String password) {
 		COMMON status=userService.login(request,email,password);
 		if(status.equals(COMMON.LOGIN_SUCCESS)) {
+			
 			return ResponseEntity.ok("success");
 		}else if(status.equals(COMMON.LOGIN_BY_NEW_EMAIL)) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("login by new email");

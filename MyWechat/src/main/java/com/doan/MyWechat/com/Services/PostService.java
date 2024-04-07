@@ -55,7 +55,7 @@ public class PostService {
 		}
 		return COMMON.CREATE_POST_SUCESS;
 	}
-	public List<Map<String,String>> getListPost() {
+	public List<Map<String,String>> getListPost(int idUserLogin) {
 		String sql="SELECT \r\n"
 				+ "tbl_user.username AS username,\r\n"
 				+ "tbl_user.avatar AS avatar,\r\n"
@@ -64,12 +64,14 @@ public class PostService {
 				+ "(SELECT tbl_common.value FROM commons AS tbl_common WHERE tbl_common.key=tbl_post.post_emote AND tbl_common.name='emote_post') AS post_emote,\r\n"
 				+ "(SELECT tbl_common.value FROM commons AS tbl_common WHERE tbl_common.key=tbl_post.post_background AND tbl_common.name='background_post') AS post_background,\r\n"
 				+ "tbl_post.created_at AS created_at,\r\n"
-				+ "tbl_post.scope AS scope\r\n"
+				+ "tbl_post.scope AS scope,\r\n"
+				+ "tbl_post.id AS post_id,\r\n"
+				+ "(SELECT COUNT(*) FROM likes AS tbl_likes WHERE tbl_likes.post_id=tbl_post.id AND tbl_likes.is_like='1') AS count_like,\r\n"
+				+ "(SELECT COUNT(*) FROM likes AS tbl_likes WHERE tbl_likes.post_id=tbl_post.id AND tbl_likes.user_id="+"'"+idUserLogin+"'"+" AND tbl_likes.is_like='1') AS user_login_like\r\n"
 				+ "FROM Posts AS tbl_post\r\n"
 				+ "INNER JOIN  users AS tbl_user\r\n"
 				+ "ON tbl_post.user_id=tbl_user.id\r\n"
-				+ "ORDER BY tbl_post.created_at DESC \r\n"
-				+ "";
+				+ "ORDER BY tbl_post.created_at DESC ";
 		List<Map<String,String>> listPosts=entityManager.createNativeQuery(sql).getResultList();
 		for (Object object : listPosts) {
 			Object[] objArr = (Object[]) object;
@@ -115,6 +117,7 @@ public class PostService {
 		
 		return listPosts;
 		}
+	
 		
 	}
 

@@ -333,17 +333,31 @@
 				</c:choose>
                 <div class="card-footer">
                     <div class="d-flex flex-row">
-                        <a class="a-footer-card" href="#"><i class="bi bi-heart-fill" style="color: red;"></i>18</a>
-                        <a class="a-footer-card" href="#">26 Bình luận</a>
-                        <a class="a-footer-card" href="#">5 Chia sẻ</a>
+						<c:choose>
+							<c:when test="${post[10] lt 1}">
+							<a class="a-footer-card d-flex" href="#"><i class="bi bi-heart-fill" style="color: red;"></i><p id="p-countlike${post[8]}">${post[9]}</p></a>
+							</c:when>
+							<c:when test="${post[10] == 1}">
+							<a class="a-footer-card d-flex" href="#"><i class="bi bi-heart-fill" style="color: red;"></i><p id="p-countlike${post[8]}">Bạn và ${post[9] - 1} người khác</p></a>
+							</c:when>
+                        </c:choose>
+                        <a class="a-footer-card d-flex" href="#">26 Bình luận</a>
+                        <a class="a-footer-card d-flex" href="#">5 Chia sẻ</a>
                     </div>
                     <div class="btn-group">
-                        <button type="button" id="btn-heart" class="btn btn-footer-card btn-outline-secondary"
-                            onclick="clickHeart()" fdprocessedid="9g79xr">
-                            <i class="bi bi-heart" id="i-lightheart"> Yêu thích</i>
-                            <span class="visually-hidden">Button</span>
+                        <button type="button"  id="btn-heart${post[8]}" class="btn btn-footer-card btn-outline-secondary"
+                            onclick="clickHeart('btn-heart'+${post[8]},'i-lightheart'+${post[8]})" fdprocessedid="9g79xr">
+						<c:choose>
+							<c:when test="${post[10] lt 1}">
+							<i class="bi bi-heart" id="i-lightheart${post[8]}"> Yêu thích</i>
+							</c:when>
+							<c:when test="${post[10] == 1}">
+							<i class="bi bi-heart-fill" style="color:red" id="i-lightheart${post[8]}"> Yêu thích</i>
+							</c:when>
+                        </c:choose>
+
                         </button>
-                        <button type="button" id="btn-create-comment" class="btn btn-footer-card btn-outline-secondary"
+                        <button type="button" id="btn-create-comment${post[8]}" onclick="clickIComment('btn-create-comment'+${post[8]},'my-inputcomment'+${post[8]})" class="btn btn-footer-card btn-outline-secondary"
                             fdprocessedid="ggkv13">
                             <i class="bi bi-chat"> Bình luận</i>
                             <span class="visually-hidden">Button</span>
@@ -385,10 +399,10 @@
                         <div class="my-comment d-flex flex-row comment">
                             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
                                 class="rounded-circle">
-                            <input type="text" class="form-control" onchange="inputComment()" onkeydown="inputComment()"
-                                placeholder="Viết bình luận..." id="my-inputcomment" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" onchange="inputComment('my-inputcomment'+${post[8]},'i-send'+${post[8]})" onkeydown="inputComment('my-inputcomment'+${post[8]},'i-send'+${post[8]})" onblur="inputComment('my-inputcomment'+${post[8]},'i-send'+${post[8]})"
+                                placeholder="Viết bình luận..." id="my-inputcomment${post[8]}" aria-describedby="basic-addon1">
                             <a href="#">
-                                <i id="i-send" class="bi  bi-send"></i>
+                                <i id="i-send${post[8]}" class="bi i-send  bi-send"></i>
                             </a>
                         </div>
 

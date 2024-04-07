@@ -1,6 +1,7 @@
 package com.doan.MyWechat.com.Entities;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,8 +24,11 @@ public class Like {
 	private int userId;
 	
 	@Column(name="created_at")
-	private Date createdAt;
-
+	private Timestamp createdAt;
+	
+	@Column(name="is_like")
+	private int isLike;
+	
 	public int getId() {
 		return id;
 	}
@@ -49,22 +53,32 @@ public class Like {
 		this.userId = userId;
 	}
 
-	public Date getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
+	
 
 
-	public Like(int id, int postId, int userId, Date createdAt, Date updatedAt) {
-		
+	public int getIsLike() {
+		return isLike;
+	}
+
+	public void setIsLike(int isLike) {
+		this.isLike = isLike;
+	}
+
+	
+	public Like(int id, int postId, int userId, Timestamp createdAt, int isLike) {
+		super();
 		this.id = id;
 		this.postId = postId;
 		this.userId = userId;
 		this.createdAt = createdAt;
-	
+		this.isLike = isLike;
 	}
 
 	public Like() {

@@ -19,9 +19,9 @@ var listImage=[];
    // modalCreateStatus.onclick(function(){
     //    modalCreateStatus.hide();
     //})
-    function clickHeart(){
-        const btnLightHeart=document.getElementById("btn-heart");
-        const iLightHeart=document.getElementById("i-lightheart");
+    function clickHeart(btnId,iId){
+        const btnLightHeart=document.getElementById(btnId);
+        const iLightHeart=document.getElementById(iId);
         if(iLightHeart.classList.contains("bi-heart")){
             iLightHeart.classList.add('bi-heart-fill');
             iLightHeart.classList.remove('bi-heart');
@@ -31,27 +31,61 @@ var listImage=[];
             iLightHeart.classList.remove('bi-heart-fill');
             iLightHeart.style.color="black";
         }
-        
+        var idPost=btnId.substring(9);
+        if(iLightHeart.classList.contains("bi-heart-fill")&&iLightHeart.style.color=="red"){
+			ajaxLikePost(true,idPost,btnId,iId);
+		}else{
+			ajaxLikePost(false,idPost,btnId,iId);
+		}
     }
-
-    function inputComment(){
-        const inputComment=document.getElementById("my-inputcomment");
-        const iSend=document.getElementById("i-send");
+	function ajaxLikePost(isLike,idPost,btnId,iId){
+		var  formData = new FormData();
+		const inputUserId=document.getElementById("userid");
+		formData.append("postId",idPost);
+		formData.append("userId",inputUserId.value);
+		isLike ? formData.append("isLike",1) : formData.append("isLike",0);
+		$.ajax({
+			type:"POST",
+			url:"/likepost",
+			data:formData,
+			processData:false,
+			contentType:false,
+			success:function(result){
+				const pCountLike=document.getElementById('p-countlike'+idPost);
+				if(result=="userloginlike"){
+					pCountLike.textContent="Bạn và "+pCountLike.textContent+" người khác";
+				}else{
+					var index=pCountLike.textContent.search(/\d+/);
+					pCountLike.textContent=pCountLike.textContent.charAt(index);
+				}
+			},
+			error:function(result){
+				console.table(result);
+				
+			}
+		})
+		
+	}
+    function inputComment(inputId,iSendId){
+        const inputComment=document.getElementById(inputId);
+        const iSend=document.getElementById(iSendId);
         if(inputComment.value!=''){
-            iSend.classList.add('bi-send-fill');
-            iSend.classList.remove('bi-send');
+            //iSend.classList.add('bi-send-fill');
+            //iSend.classList.remove('bi-send');
             iSend.style.color="blue";
         }else{
-            iSend.classList.add('bi-send');
-            iSend.classList.remove('bi-send-fill');
+            //iSend.classList.add('bi-send');
+            //iSend.classList.remove('bi-send-fill');
             iSend.style.color="black";
         }
     }
-    const btnCreateComment=document.getElementById("btn-create-comment");
-    const inputComment2=document.getElementById("my-inputcomment");
-    btnCreateComment.addEventListener('click',()=>{
-        inputComment2.focus();
-    })
+    function clickIComment(btnId,iId){
+		const btnCreateComment=document.getElementById(btnId);
+    	const inputComment2=document.getElementById(iId);
+        	inputComment2.focus();
+ 
+	}
+    
    
     function showListMessages(){
         

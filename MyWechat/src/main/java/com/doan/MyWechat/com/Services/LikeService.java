@@ -14,7 +14,7 @@ public class LikeService {
 	LikeRepository likeRepo;
 	
 	public int likePost(String postId, String userId, String isLike) {
-		int countUserLikeThisPost=likeRepo.findCountByPostIdAndUserId(Integer.parseInt(postId), Integer.parseInt(userId));
+		int countUserLikeThisPost=likeRepo.findCountByPostIdAndUserIdAndIsLike(Integer.parseInt(postId), Integer.parseInt(userId));
 		if(countUserLikeThisPost==0) {
 			Like newLike = new Like();
 			newLike.setPostId(Integer.parseInt(postId));
@@ -29,6 +29,33 @@ public class LikeService {
 			
 		}
 		return likeRepo.findCountByPostIdAndUserIdAndIsLike(Integer.parseInt(postId), Integer.parseInt(userId));
+		
+	}
+
+	public Boolean likeCmt(String cmtId, String userId,String postId) {
+		int countUserLikeThisCmt=likeRepo.findCountByCmtIdAndUserIdAndIsLike(Integer.parseInt(cmtId), Integer.parseInt(userId));
+		int countUserDontLikeThisCmt=likeRepo.findCountByCmtIdAndUserIdAndIsDontLike(Integer.parseInt(cmtId), Integer.parseInt(userId));
+		if(countUserLikeThisCmt==0&&countUserDontLikeThisCmt==0) {
+			Like newLike = new Like();
+			newLike.setCmtId(Integer.parseInt(cmtId));
+			newLike.setUserId(Integer.parseInt(userId));
+			newLike.setPostId(Integer.parseInt(postId));
+			newLike.setIsLike(1);
+			newLike.setCreatedAt(Until.getDateTimeNow());
+			likeRepo.save(newLike);
+			return true;
+		}else if(countUserLikeThisCmt==1){
+			Like likeInDb=likeRepo.findLikeByCmtIdAndUserId(Integer.parseInt(cmtId), Integer.parseInt(userId));
+			likeInDb.setIsLike(0);
+			likeRepo.save(likeInDb);
+			return false;
+		}else if (countUserDontLikeThisCmt==1){
+			Like likeInDb=likeRepo.findLikeByCmtIdAndUserId(Integer.parseInt(cmtId), Integer.parseInt(userId));
+			likeInDb.setIsLike(1);
+			likeRepo.save(likeInDb);
+			return true;
+		}
+		else return null;
 		
 	}
 }

@@ -66,6 +66,37 @@ var listImage=[];
 		})
 		
 	}
+	function ajaxLikePost2(event){
+		var cmtId=event.target.getAttribute("cmtId");
+		var postId=event.target.getAttribute("postId");
+		var  formData = new FormData();
+		const inputUserId=document.getElementById("userId");
+		formData.append("userId",inputUserId.value);
+		formData.append("cmtId",cmtId);
+		formData.append("postId",postId);
+		$.ajax({
+			type:"POST",
+			url:"/likecmt",
+			data:formData,
+			processData:false,
+			contentType:false,
+			success:function(result){
+				const pCountLike=document.getElementById("pCountLike"+cmtId);
+				if(result=="userloginlike"){
+					pCountLike.textContent=Number(pCountLike.textContent)+1;
+				}else{
+					if(Number(pCountLike.textContent)-1==0){
+						pCountLike.textContent="";
+					}
+					else pCountLike.textContent=Number(pCountLike.textContent)-1;
+				}
+			},
+			error:function(result){
+				console.table(result);
+				
+			}
+		})
+	}
     function inputComment(inputId,iSendId){
         const inputComment=document.getElementById(inputId);
         const iSend=document.getElementById(iSendId);
@@ -109,7 +140,7 @@ var listImage=[];
 			processData:false,
 			contentType:false,
 			success:function(listArray){
-				//console.log(listArray);
+				console.log(listArray);
 				for(let i = 0; i < listArray.length; i++){
 					createFormCmt(postId,listArray[i]);
 				}
@@ -204,6 +235,9 @@ function createFormCmt2(parentCmtId,result,postId){
 	pTime.textContent=result[3];
 	pLike.style.cursor="pointer";
 	pLike.textContent="Yêu thích";
+	pLike.setAttribute("postId",postId);
+	pLike.setAttribute("cmtId",result[4]);
+	pLike.addEventListener("click",ajaxLikePost2);
 	pCmt.style.cursor="pointer";
 	pCmt.textContent="Trả lời";
 	pCmt.classList.add("actionResult");
@@ -214,6 +248,23 @@ function createFormCmt2(parentCmtId,result,postId){
 	divActionCmt.appendChild(pTime);
 	divActionCmt.appendChild(pLike);
 	divActionCmt.appendChild(pCmt);
+	const iHeart =document.createElement("i");
+	iHeart.classList.add("bi");
+	iHeart.classList.add("bi-heart-fill");
+	iHeart.style.color="red";
+	iHeart.style.marginLeft="4px";
+	iHeart.style.marginTop= "-7px";
+	const pCountLike =document.createElement("p");
+	if(result[5]!=0){
+	pCountLike.textContent=result[5];	
+	}else{
+	pCountLike.textContent="";
+	}
+	pCountLike.id="pCountLike"+result[4];
+	pCountLike.style.marginLeft="20px";
+	pCountLike.style.marginTop= "-7px";
+	divActionCmt.appendChild(pCountLike);
+	divActionCmt.appendChild(iHeart);
 	const divCmt=document.createElement("div");
 	if(result[4]!= null){
 		divCmt.id='cmt'+result[4];
@@ -256,6 +307,9 @@ function createFormCmt(postId,result){
 	pTime.textContent=result[3];
 	pLike.style.cursor="pointer";
 	pLike.textContent="Yêu thích";
+	pLike.setAttribute("postId",postId);
+	pLike.setAttribute("cmtId",result[4]);
+	pLike.addEventListener("click",ajaxLikePost2);
 	pCmt.style.cursor="pointer";
 	pCmt.textContent="Trả lời";
 	pCmt.classList.add("actionResult");
@@ -266,6 +320,23 @@ function createFormCmt(postId,result){
 	divActionCmt.appendChild(pTime);
 	divActionCmt.appendChild(pLike);
 	divActionCmt.appendChild(pCmt);
+	const iHeart =document.createElement("i");
+	iHeart.classList.add("bi");
+	iHeart.classList.add("bi-heart-fill");
+	iHeart.style.color="red";
+	iHeart.style.marginLeft="4px";
+	iHeart.style.marginTop= "-7px";
+	const pCountLike =document.createElement("p");
+	if(result[5]!=0){
+	pCountLike.textContent=result[5];	
+	}else{
+	pCountLike.textContent="";
+	}
+	pCountLike.id="pCountLike"+result[4];
+	pCountLike.style.marginLeft="20px";
+	pCountLike.style.marginTop= "-7px";
+	divActionCmt.appendChild(pCountLike);
+	divActionCmt.appendChild(iHeart);
 	const divCmt=document.createElement("div");
 	if(result[4]!= null){
 		divCmt.id='cmt'+result[4];

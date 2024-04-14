@@ -23,6 +23,9 @@ public class Like {
 	@Column(name="user_id")
 	private int userId;
 	
+	@Column(name="cmt_id")
+	private int cmtId;
+	
 	@Column(name="created_at")
 	private Timestamp createdAt;
 	
@@ -49,6 +52,14 @@ public class Like {
 		return userId;
 	}
 
+	public int getCmtId() {
+		return cmtId;
+	}
+
+	public void setCmtId(int cmtId) {
+		this.cmtId = cmtId;
+	}
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
@@ -72,11 +83,13 @@ public class Like {
 	}
 
 	
-	public Like(int id, int postId, int userId, Timestamp createdAt, int isLike) {
+
+	public Like(int id, int postId, int userId, int cmtId, Timestamp createdAt, int isLike) {
 		super();
 		this.id = id;
 		this.postId = postId;
 		this.userId = userId;
+		this.cmtId = cmtId;
 		this.createdAt = createdAt;
 		this.isLike = isLike;
 	}

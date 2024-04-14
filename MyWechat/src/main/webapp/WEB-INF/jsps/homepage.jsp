@@ -103,7 +103,7 @@
                 <div>
                     <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
                         <img src="https://github.com/mdo.png" alt="mdo" wid="60" height="60" class="rounded-circle">
-                        <h4 class="mb-0">Thảo Chó</h4>
+                        <h4 class="mb-0">Thảo</h4>
                         <small class="opacity-50 text-nowrap">now</small>
                     </a>
                     <div class="d-flex flex-row">

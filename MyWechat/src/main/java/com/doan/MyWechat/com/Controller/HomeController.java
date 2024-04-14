@@ -58,9 +58,19 @@ public class HomeController {
 	}
 	
 	@PostMapping(value ="/likepost")
-	public ResponseEntity<String> likePost(Model model,@RequestParam String postId,@RequestParam String userId,@RequestParam String isLike) {  
+	public ResponseEntity<String> likePost(@RequestParam String postId,@RequestParam String userId,@RequestParam String isLike) {  
 		int userLoginLike =likeService.likePost(postId,userId,isLike);
 		if(userLoginLike==1) {
+			return ResponseEntity.ok("userloginlike");
+		}
+		return ResponseEntity.ok("userlogindontlike");
+
+	}
+	
+	@PostMapping(value ="/likecmt")
+	public ResponseEntity<String> likeCmt(@RequestParam String cmtId,@RequestParam String userId,@RequestParam String postId) {  
+		Boolean isLike=likeService.likeCmt(cmtId,userId,postId);
+		if(isLike) {
 			return ResponseEntity.ok("userloginlike");
 		}
 		return ResponseEntity.ok("userlogindontlike");

@@ -9,7 +9,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Wechat</title>
 	<link rel="icon" href="..\images\icon-tab\favicon2.png" type="image/png" >
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name='viewport' content='wid=device-wid, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='../css/bootstrap-5.3.2-dist/css/bootstrap.min.css'>
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -58,7 +58,7 @@
                 </form>
                 <div class="dropdown text-end">
                     <a href="/personal" class="d-block link-body-emphasis text-decoration-none ">
-                        <img src="${user.avatar}"  alt="mdo" width="32" height="32" class="rounded-circle">
+                        <img src="${user.avatar}"  alt="mdo" wid="32" height="32" class="rounded-circle">
                     </a>
                 </div>
             </div>
@@ -102,8 +102,8 @@
                 <h3 class="title-rightnavi">Lời mời kết bạn</h3>
                 <div>
                     <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="60" height="60" class="rounded-circle">
-                        <h4 class="mb-0">Thảo</h4>
+                        <img src="https://github.com/mdo.png" alt="mdo" wid="60" height="60" class="rounded-circle">
+                        <h4 class="mb-0">Thảo Chó</h4>
                         <small class="opacity-50 text-nowrap">now</small>
                     </a>
                     <div class="d-flex flex-row">
@@ -134,7 +134,7 @@
 						</div> 
                         <div class="modal-body">
 							<div class="d-flex flex-row mb-2" >
-                    			<img src="../images/${user.avatar}" alt="mdo" width="40" height="40" class=" img-normal  rounded-circle">
+                    			<img src="../images/${user.avatar}" alt="mdo" wid="40" height="40" class=" img-normal  rounded-circle">
                     			<div class="d-flex flex-column scope">
                         		<h5 class="card-title" id="card-title">${user.username}</h5>
                         			<select id="select-scope" class="form-select select-scope" >
@@ -147,7 +147,7 @@
                             <div class="form-floating mb-3">
                                 <input type="text" style="height: 160px;" class="form-control rounded-3"
                                     id="inputStatus" placeholder="" fdprocessedid="h0hky">
-                                <label for="inputStatus">Bạn đang nghĩ gì thế ?</label>
+                                <label for="inputStatus">Bạn đang nghĩ gì ế ?</label>
                             </div>
 							<div id="div-showimage" class="show-image">
 							</div>
@@ -165,24 +165,24 @@
 							</div>
 							<h6>Gợi ý</h6>
 							<div class="list-group list-resultsearch">
-  								<div  class="list-group-item list-group-item-action"> <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+  								<div  class="list-group-item list-group-item-action"> <img src="https://giub.com/mdo.png" alt="mdo" wid="40" height="40"
                         class="img-normal rounded-circle"> A second link item</div>
-  								<div  class="list-group-item list-group-item-action"> <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+  								<div  class="list-group-item list-group-item-action"> <img src="https://giub.com/mdo.png" alt="mdo" wid="40" height="40"
                         class="img-normal rounded-circle"> A second link item</div>
-  								<div  class="list-group-item list-group-item-action"> <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+  								<div  class="list-group-item list-group-item-action"> <img src="https://giub.com/mdo.png" alt="mdo" wid="40" height="40"
                         class="img-normal rounded-circle"> A second link item</div>
-  								<div  class="list-group-item list-group-item-action"> <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+  								<div  class="list-group-item list-group-item-action"> <img src="https://giub.com/mdo.png" alt="mdo" wid="40" height="40"
                         class="img-normal rounded-circle"> A second link item</div>
 							</div>
 							</div>
 							<div class="" id="div-templatebackground">
-							<img src="../images/background/background1.avif" id="background1" onclick="setBackgroundStatus('background1')" class="img-template" width="40">
-							<img src="../images/background/background2.avif" id="background2" onclick="setBackgroundStatus('background2')" class="img-template" width="40">
-							<img src="../images/background/background3.avif" id="background3" onclick="setBackgroundStatus('background3')" class="img-template" width="40">
-							<img src="../images/background/background4.avif" id="background4" onclick="setBackgroundStatus('background4')" class="img-template" width="40">
-							<img src="../images/background/background5.avif" id="background5" onclick="setBackgroundStatus('background5')" class="img-template" width="40">
-							<img src="../images/background/background6.avif" id="background6" onclick="setBackgroundStatus('background6')" class="img-template" width="40">
-							<img src="../images/background/background7.avif" id="background7" onclick="setBackgroundStatus('background7')" class="img-template" width="40">
+							<img src="../images/background/background1.avif" id="background1" onclick="setBackgroundStatus('background1')" class="img-template" wid="40">
+							<img src="../images/background/background2.avif" id="background2" onclick="setBackgroundStatus('background2')" class="img-template" wid="40">
+							<img src="../images/background/background3.avif" id="background3" onclick="setBackgroundStatus('background3')" class="img-template" wid="40">
+							<img src="../images/background/background4.avif" id="background4" onclick="setBackgroundStatus('background4')" class="img-template" wid="40">
+							<img src="../images/background/background5.avif" id="background5" onclick="setBackgroundStatus('background5')" class="img-template" wid="40">
+							<img src="../images/background/background6.avif" id="background6" onclick="setBackgroundStatus('background6')" class="img-template" wid="40">
+							<img src="../images/background/background7.avif" id="background7" onclick="setBackgroundStatus('background7')" class="img-template" wid="40">
 							</div>
 							<div id="div-emoteaction" style="height: 180px;" >
 							<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -197,15 +197,15 @@
   								 
 								<ul class="list-group ul-emotes" >
   									<li class="li-emotes" id="emote1" onclick="clickEmote('emote1')" ><i class="bi bi-emoji-laughing" style="color:#f0ec0e"></i> Hạnh phúc</li>
-  									<li class="li-emotes" id="emote2" onclick="clickEmote('emote2')"  ><i class="bi bi-emoji-heart-eyes" style="color:#f0ec0e"></i> Yêu thích</li>
-  									<li class="li-emotes" id="emote3" onclick="clickEmote('emote3')"  ><i class="bi bi-emoji-kiss" style="color:#f0ec0e" ></i> Thích</li>
+  									<li class="li-emotes" id="emote2" onclick="clickEmote('emote2')"  ><i class="bi bi-emoji-heart-eyes" style="color:#f0ec0e"></i> Yêu ích</li>
+  									<li class="li-emotes" id="emote3" onclick="clickEmote('emote3')"  ><i class="bi bi-emoji-kiss" style="color:#f0ec0e" ></i> ích</li>
   									<li class="li-emotes" id="emote4" onclick="clickEmote('emote4')"  ><i class="bi bi-emoji-sunglasses" style="color:#f0ec0e" ></i> Hãnh diện</li>
   									<li class="li-emotes" id="emote5" onclick="clickEmote('emote5')"  ><i class="bi bi-emoji-smile" style="color:#f0ec0e"></i> Vui vẻ</li>
 								</ul>
 								<ul class="list-group ul-emotes" >
   									<li class="li-emotes" id="emote6" onclick="clickEmote('emote6')"  ><i class="bi bi-emoji-angry" style="color:#f0ec0e"></i> Tức giận</li>
   									<li class="li-emotes" id="emote7" onclick="clickEmote('emote7')"  ><i class="bi bi-emoji-expressionless" style="color:#f0ec0e"></i> Không hài lòng</li>
-  									<li class="li-emotes" id="emote8" onclick="clickEmote('emote8')"  ><i class="bi bi-arrow-through-heart" style="color:#f0ec0e"></i> Muốn yêu</li>
+  									<li class="li-emotes" id="emote8" onclick="clickEmote('emote8')"  ><i class="bi bi-arrow-rough-heart" style="color:#f0ec0e"></i> Muốn yêu</li>
   									<li class="li-emotes" id="emote9" onclick="clickEmote('emote9')"  ><i class="bi bi-emoji-dizzy" style="color:#f0ec0e"></i> Ngỡ ngàng</li>
   									<li class="li-emotes" id="emote10" onclick="clickEmote('emote10')"  ><i class="bi bi-emoji-frown" style="color:#f0ec0e"></i> Buồn</li>
 								</ul>
@@ -252,7 +252,7 @@
                                 </li>
 								<!--
 								<li class="status-icons">
-                                    <i style="" class="bi bi-three-dots"></i>
+                                    <i style="" class="bi bi-ree-dots"></i>
                                 </li>
 								-->
                             </ul>
@@ -274,7 +274,7 @@
             <div class="card card-status d-flex flex-row">
                 <div class=" d-flex flex-row card-body card-body-avatar">
                     <a href="/home">
-                        <img src="/images/${user.avatar}" alt="mdo" width="40" height="40"
+                        <img src="/images/${user.avatar}" alt="mdo" wid="40" height="40"
                             class="img-miniavatar rounded-circle">
                     </a>
 
@@ -288,7 +288,7 @@
 			<c:forEach var="post" items="${listPost}"> 
             <div class="card">
                 <div class="d-flex flex-row">
-                    <img src="${post[1]}" alt="mdo" width="40" height="40"
+                    <img src="${post[1]}" alt="mdo" wid="40" height="40"
                         class=" img-normal  rounded-circle">
                     <div class="d-flex flex-column">
                         <h5 class="card-title d-flex">${post[0]}
@@ -337,27 +337,34 @@
 							<c:when test="${post[10] lt 1}">
 							<a class="a-footer-card d-flex" href="#"><i class="bi bi-heart-fill" style="color: red;"></i><p id="p-countlike${post[8]}">${post[9]}</p></a>
 							</c:when>
-							<c:when test="${post[10] == 1}">
+							<c:when test="${post[10] == 1 }">
 							<a class="a-footer-card d-flex" href="#"><i class="bi bi-heart-fill" style="color: red;"></i><p id="p-countlike${post[8]}">Bạn và ${post[9] - 1} người khác</p></a>
 							</c:when>
                         </c:choose>
-                        <a class="a-footer-card d-flex" href="#">26 Bình luận</a>
+						<c:choose>
+							<c:when test="${post[11] gt 0 }">
+                        	<a class="a-footer-card d-flex" href="#">${post[11]} Bình luận</a>
+							</c:when>
+							<c:otherwise>
+							<a class="a-footer-card d-flex" href="#"> Bình luận</a>
+							</c:otherwise>
+						</c:choose>
                         <a class="a-footer-card d-flex" href="#">5 Chia sẻ</a>
                     </div>
                     <div class="btn-group">
                         <button type="button"  id="btn-heart${post[8]}" class="btn btn-footer-card btn-outline-secondary"
-                            onclick="clickHeart('btn-heart'+${post[8]},'i-lightheart'+${post[8]})" fdprocessedid="9g79xr">
+                            onclick="clickHeart('btn-heart'+${post[8]},'i-ligheart'+${post[8]})" fdprocessedid="9g79xr">
 						<c:choose>
 							<c:when test="${post[10] lt 1}">
-							<i class="bi bi-heart" id="i-lightheart${post[8]}"> Yêu thích</i>
+							<i class="bi bi-heart" id="i-ligheart${post[8]}"> Yêu thích</i>
 							</c:when>
 							<c:when test="${post[10] == 1}">
-							<i class="bi bi-heart-fill" style="color:red" id="i-lightheart${post[8]}"> Yêu thích</i>
+							<i class="bi bi-heart-fill" style="color:red" id="i-ligheart${post[8]}"> Yêu thích</i>
 							</c:when>
                         </c:choose>
 
                         </button>
-                        <button type="button" id="btn-create-comment${post[8]}" onclick="clickIComment('btn-create-comment'+${post[8]},'my-inputcomment'+${post[8]})" class="btn btn-footer-card btn-outline-secondary"
+                        <button type="button" id="btn-create-comment${post[8]}" onclick="clickIComment('btn-create-comment'+${post[8]},'my-inputcomment'+${post[8]},'list-comments'+${post[8]},${post[8]})" class="btn btn-footer-card btn-outline-secondary"
                             fdprocessedid="ggkv13">
                             <i class="bi bi-chat"> Bình luận</i>
                             <span class="visually-hidden">Button</span>
@@ -371,39 +378,47 @@
                             <span class="visually-hidden">Button</span>
                         </button>
                     </div>
-                    <div class="list-comments">
-                        <div class="user-comment comment">
+                    <div class="list-comments" id="list-comments${post[8]}">
+						<select id="filter-listcomment" class="form-select select-scope" >
+  										<option selected value="1">Mới nhất</option>
+  										<option value="2">Đáng chú ý</option>
+  										<option value="3">Tất cả</option>
+						</select>
+                        <div id="list-cmt${post[8]}" class="user-comment comment">
+							<c:if test="${listcmts[0]} != 0">
                             <div class="d-flex flex-row">
-                                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
+                                <img src="${listcmts[2]}" alt="mdo" wid="32" height="32"
                                     class="rounded-circle">
                                 <div class="detail-comment">
-                                    <h6>Nguyễn Nam</h6>
-                                    <p class="card-text"><small class="text-body-secondary">3 mins ago</small>
-                                    </p>
-                                    <p>Ảnh rất đẹp !</p>
+                                    <h6>${listcmts[1]}</h6>
+                                    <p>${listcmts[3]}</p>
                                 </div>
-
-                            </div>
-                            <div class="title-actioncomment d-flex flex-row">
+							</div>
+							<div class="title-actioncomment d-flex flex-row">
                                 <a href="#">
-                                    <p>3 phút</p>
+                                    <p>${listcmts[4]}</p>
                                 </a>
                                 <a href="#">
-                                    <p>Yêu thích</p>
+                                    <p>Yêu ích</p>
                                 </a>
                                 <a href="#">
                                     <p>Phản hồi</p>
                                 </a>
                             </div>
+							</c:if>
+                            
+                            
                         </div>
+						
                         <div class="my-comment d-flex flex-row comment">
-                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
+                            <img src="${user.avatar}" alt="mdo" wid="32" height="32"
                                 class="rounded-circle">
                             <input type="text" class="form-control" onchange="inputComment('my-inputcomment'+${post[8]},'i-send'+${post[8]})" onkeydown="inputComment('my-inputcomment'+${post[8]},'i-send'+${post[8]})" onblur="inputComment('my-inputcomment'+${post[8]},'i-send'+${post[8]})"
                                 placeholder="Viết bình luận..." id="my-inputcomment${post[8]}" aria-describedby="basic-addon1">
-                            <a href="#">
-                                <i id="i-send${post[8]}" class="bi i-send  bi-send"></i>
-                            </a>
+                            
+							<div  class="a-bi-send" >
+                                <i id="i-send${post[8]}" onclick="comment(${post[8]},'my-inputcomment'+${post[8]})"  class="bi i-send  bi-send"></i>
+                            </div>
                         </div>
 
                     </div>
@@ -421,7 +436,7 @@
                     <button type="button" class="btn btn-listchats btn-light btn-friend " onclick="closeLissMessages()" ><i class="bi bi-x-lg"></i></i></button>
                     </div>
                     <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        <img src="https://giub.com/mdo.png" alt="mdo" wid="40" height="40"
                             class=" img-normal  rounded-circle">
                         <div class="d-flex gap-2 w-100 justify-content-between">
                             <div>
@@ -432,23 +447,23 @@
                         </div>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        <img src="https://giub.com/mdo.png" alt="mdo" wid="40" height="40"
                             class=" img-normal  rounded-circle">
                         <div class="d-flex gap-2 w-100 justify-content-between">
                             <div>
-                                <h6 class="mb-0">Another title here</h6>
-                                <p class="mb-0 opacity-75">Some placeholder content in a paragraph that goes a little
+                                <h6 class="mb-0">Anoer title here</h6>
+                                <p class="mb-0 opacity-75">Some placeholder content in a paragraph at goes a little
                                     longer so it wraps to a new line.</p>
                             </div>
                             <small class="opacity-50 text-nowrap">3d</small>
                         </div>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        <img src="https://giub.com/mdo.png" alt="mdo" wid="40" height="40"
                             class=" img-normal  rounded-circle">
                         <div class="d-flex gap-2 w-100 justify-content-between">
                             <div>
-                                <h6 class="mb-0">Third heading</h6>
+                                <h6 class="mb-0">ird heading</h6>
                                 <p class="mb-0 opacity-75">Some placeholder content in a paragraph.</p>
                             </div>
                             <small class="opacity-50 text-nowrap">1w</small>
@@ -466,8 +481,8 @@
                         <span class="input-group-text" id="basic-addon1">Đến</span>
                         <input type="text" class="form-control"  aria-describedby="basic-addon1">
                     </div>
-                    <a href="#" id="a-input-mess" style="width: 100%;" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                        <img src="https://github.com/mdo.png" style="text-align: center;" alt="mdo" width="40" height="40"
+                    <a href="#" id="a-input-mess" style="wid: 100%;" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <img src="https://giub.com/mdo.png" style="text-align: center;" alt="mdo" wid="40" height="40"
                             class=" img-normal  rounded-circle">
                             <h6 class="mb-0">Văn Quang</h6>
                     </a>   
@@ -484,7 +499,9 @@
                 </div>
             </div>
 			<div class="d-none">
-				<input type="hidden" id="userid" value="${user.id}" />
+				<input type="hidden" id="userId" value="${user.id}" />
+				<input type="hidden" id="userName" value="${user.username}" />
+				<input type="hidden" id="userAvatar" value="${user.avatar}" />
 			</div>
 			
             <script src="../js/myjs/homepage.js"></script>

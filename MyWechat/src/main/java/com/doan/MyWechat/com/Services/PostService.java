@@ -37,7 +37,7 @@ public class PostService {
 	
 	public COMMON createPost(String userid, MultipartFile[] postImages, String content, String backgroundId,
 			String emoteId, int scope) {
-		System.out.println(userid+"_"+postImages+" "+content+" "+backgroundId+" "+emoteId+" "+scope);
+		//System.out.println(userid+"_"+postImages+" "+content+" "+backgroundId+" "+emoteId+" "+scope);
 		Post newPost = new Post();
 		newPost.setUserId(Integer.parseInt(userid));
 		newPost.setContent(content);
@@ -67,11 +67,14 @@ public class PostService {
 				+ "tbl_post.scope AS scope,\r\n"
 				+ "tbl_post.id AS post_id,\r\n"
 				+ "(SELECT COUNT(*) FROM likes AS tbl_likes WHERE tbl_likes.post_id=tbl_post.id AND tbl_likes.is_like='1') AS count_like,\r\n"
-				+ "(SELECT COUNT(*) FROM likes AS tbl_likes WHERE tbl_likes.post_id=tbl_post.id AND tbl_likes.user_id="+"'"+idUserLogin+"'"+" AND tbl_likes.is_like='1') AS user_login_like\r\n"
+				+ "(SELECT COUNT(*) FROM likes AS tbl_likes WHERE tbl_likes.post_id=tbl_post.id AND tbl_likes.user_id='"+idUserLogin+"' AND tbl_likes.is_like='1') AS user_login_like,\r\n"
+				+ "(SELECT COUNT(*) FROM comments AS tbl_cmts WHERE tbl_cmts.post_id=tbl_post.id AND tbl_cmts.delete_flg IS NULL OR tbl_cmts.delete_flg=0) AS count_cmt\r\n"
 				+ "FROM Posts AS tbl_post\r\n"
 				+ "INNER JOIN  users AS tbl_user\r\n"
 				+ "ON tbl_post.user_id=tbl_user.id\r\n"
-				+ "ORDER BY tbl_post.created_at DESC ";
+				+ "ORDER BY tbl_post.created_at DESC \r\n"
+				+ "";
+		//System.out.println(sql);
 		List<Map<String,String>> listPosts=entityManager.createNativeQuery(sql).getResultList();
 		for (Object object : listPosts) {
 			Object[] objArr = (Object[]) object;
@@ -90,26 +93,10 @@ public class PostService {
 				}
 			}
 			if(objArr[6]!=null) {
-				Timestamp now = Until.getDateTimeNow();
-				LocalDateTime lcDateTimeNow = now.toLocalDateTime();
 				Timestamp timeCreatePost=(Timestamp) objArr[6];
 				LocalDateTime lcCreatePost=timeCreatePost.toLocalDateTime();
-				if((lcDateTimeNow.getYear()-lcCreatePost.getYear())>0) {
-					objArr[6]=lcCreatePost.getDayOfMonth()+" tháng "+lcCreatePost.getMonthValue()+" "+lcCreatePost.getYear();
-				}else if((lcDateTimeNow.getMonthValue()-lcCreatePost.getMonthValue())>0) {
-					objArr[6]=lcDateTimeNow.getMonthValue()-lcCreatePost.getMonthValue()+ " tháng trước";
-				}else if((lcDateTimeNow.getDayOfMonth()-lcCreatePost.getDayOfMonth())>0) {
-					objArr[6]=lcDateTimeNow.getDayOfMonth()-lcCreatePost.getDayOfMonth()+ " ngày trước";
-				}else if((lcDateTimeNow.getHour()-lcCreatePost.getHour())>0) {
-					objArr[6]=lcDateTimeNow.getHour()-lcCreatePost.getHour()+ " giờ trước";
-				}
-				else if((lcDateTimeNow.getMinute()-lcCreatePost.getMinute())>0) {
-					objArr[6]=lcDateTimeNow.getMinute()-lcCreatePost.getMinute()+ " phút trước";
-				}else if((lcDateTimeNow.getSecond()-lcCreatePost.getSecond())>0) {
-					objArr[6]=lcDateTimeNow.getSecond()-lcCreatePost.getSecond()+ " giây trước";
-				}else {
-					objArr[6]="vừa xong";
-				}
+				objArr[6]=Until.compareTimeWithNow(lcCreatePost);
+				
 				
 			}
 		}

@@ -178,6 +178,8 @@ margin-left: 0;
 }
 .user-comment{
     margin-top: 12px;
+    max-height: 134px;
+    overflow: auto
 }
 
 .detail-comment>p, .detail-comment>h6{
@@ -273,9 +275,11 @@ margin-left: 0;
 	padding: 0;
 	font-size: 12px;
 	font-weight: bold;
+
 }
 
 .img-template{
+	width:40px;
 	margin-left:20px;
 	cursor:pointer;
 }
@@ -336,3 +340,17 @@ margin-left: 0;
 	margin-left: 8px;
 
 	}
+.list-comments{
+	display:none;
+	transition: opacity 0.5s ease-in-out;
+}
+#filter-listcomment{
+	
+	position: relative;
+	top:10px;
+	left:85%;
+}
+.a-bi-send{
+	cursor: pointer;
+}
+

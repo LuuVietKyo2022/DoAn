@@ -40,7 +40,7 @@ var listImage=[];
     }
 	function ajaxLikePost(isLike,idPost,btnId,iId){
 		var  formData = new FormData();
-		const inputUserId=document.getElementById("userid");
+		const inputUserId=document.getElementById("userId");
 		formData.append("postId",idPost);
 		formData.append("userId",inputUserId.value);
 		isLike ? formData.append("isLike",1) : formData.append("isLike",0);
@@ -79,12 +79,253 @@ var listImage=[];
             iSend.style.color="black";
         }
     }
-    function clickIComment(btnId,iId){
+    function clickIComment(btnId,iId,divCmtsId,postId){
+		const divCmts=document.getElementById(divCmtsId);
+		if(divCmts.style.display=="none"||divCmts.style.display==""){
+			divCmts.style.display="block";	
+			divCmts.style.opacity="1";
+			const divlistCmt=document.getElementById("list-cmt"+postId);
+			divlistCmt.textContent="";
+			getComment(postId,1);
+		}else{
+			divCmts.style.display="none";
+			divCmts.style.opacity="0";	
+		}
+		
 		const btnCreateComment=document.getElementById(btnId);
     	const inputComment2=document.getElementById(iId);
         	inputComment2.focus();
  
 	}
+	function getComment(postId,filterType){
+		var formData=new FormData();
+		formData.append("postId",postId);
+		formData.append("filterType",filterType);
+		
+		$.ajax({
+			type:"POST",
+			url:"/getlistcomment",
+			data:formData,
+			processData:false,
+			contentType:false,
+			success:function(listArray){
+				//console.log(listArray);
+				for(let i = 0; i < listArray.length; i++){
+					createFormCmt(postId,listArray[i]);
+				}
+			},error:function(result){
+				console.log(result);
+			}
+		})
+	}
+	function comment(postId,inputCmtId){
+		const inputComment=document.getElementById(inputCmtId);
+		const inputUserId=document.getElementById("userId");
+		if(inputComment.value!=""){
+			var formData = new FormData();
+			formData.append("postId",postId);
+			formData.append("userId",inputUserId.value);
+			formData.append("content",inputComment.value);
+			$.ajax({
+				type:"POST",
+				url:"/createcomment",
+				data:formData,
+				processData:false,
+				contentType:false,
+				success:function(result){
+					inputComment.value="";
+					createFormCmt(postId,result);
+				},
+				error:function(result){
+					console.table(result);
+				}
+			})
+		}
+}
+function comment2(event){
+	console.log(event.target);
+	var parentCmtId=event.target.getAttribute("parentCmtId");
+	var postId=event.target.getAttribute("postId");
+	const inputComment=document.getElementById("input"+event.target.id);
+	const inputUserId=document.getElementById("userId");
+	const divActionResult=document.getElementById("actionResult"+parentCmtId);
+		if(inputComment.value!=""){
+			var formData = new FormData();
+			formData.append("cmtId",parentCmtId);
+			formData.append("postId",postId);
+			formData.append("userId",inputUserId.value);
+			formData.append("content",inputComment.value);
+			$.ajax({
+				type:"POST",
+				url:"/createcomment2",
+				data:formData,
+				processData:false,
+				contentType:false,
+				success:function(result){
+					divActionResult.textContent="";
+					divActionResult.textContent="Trả lời";
+					createFormCmt2(parentCmtId,result,postId);
+				},
+				error:function(result){
+					console.table(result);
+				}
+			})
+		}
+}
+function createFormCmt2(parentCmtId,result,postId){
+	const divParentCmt=document.getElementById("actionResult"+parentCmtId);
+	const divParent=document.createElement("div");
+	divParent.classList.add("d-flex");
+	divParent.classList.add("flex-row");
+	
+	const imgUser=document.createElement("img");
+	imgUser.src=result[1];
+	imgUser.width="32";
+	imgUser.height="32";
+	imgUser.classList.add("rounded-circle");
+	divParent.appendChild(imgUser);
+	const divDetailCmt=document.createElement("div");
+	divDetailCmt.classList.add("detail-comment");
+	const h6nameUser=document.createElement("h6");
+	h6nameUser.textContent=result[0];
+	const pContent=document.createElement("p");
+	pContent.textContent=result[2];
+	divDetailCmt.appendChild(h6nameUser);
+	divDetailCmt.appendChild(pContent);
+	divParent.appendChild(divDetailCmt);
+	const divActionCmt=document.createElement("div");
+	divActionCmt.classList.add("title-actioncomment");
+	divActionCmt.classList.add("d-flex");
+	divActionCmt.classList.add("flex-row");
+	const pTime=document.createElement("a");
+	const pLike=document.createElement("a");
+	const pCmt=document.createElement("a");
+	pTime.style.cursor="pointer";
+	pTime.textContent=result[3];
+	pLike.style.cursor="pointer";
+	pLike.textContent="Yêu thích";
+	pCmt.style.cursor="pointer";
+	pCmt.textContent="Trả lời";
+	pCmt.classList.add("actionResult");
+	if(result[4]!= null){
+		pCmt.id='actionResult'+result[4];
+	}
+	pCmt.setAttribute("postId",postId);
+	divActionCmt.appendChild(pTime);
+	divActionCmt.appendChild(pLike);
+	divActionCmt.appendChild(pCmt);
+	const divCmt=document.createElement("div");
+	if(result[4]!= null){
+		divCmt.id='cmt'+result[4];
+	}
+	divCmt.style.marginLeft="-170px";
+	divCmt.style.marginTop="20px";
+	divCmt.appendChild(divParent);
+	divCmt.appendChild(divActionCmt);
+	divParentCmt.appendChild(divCmt);
+	pCmt.addEventListener("click",createFormResultCmt);
+}
+function createFormCmt(postId,result){
+	const divlistCmt=document.getElementById("list-cmt"+postId);
+	const divParent=document.createElement("div");
+	divParent.classList.add("d-flex");
+	divParent.classList.add("flex-row");
+	const imgUser=document.createElement("img");
+	imgUser.src=result[1];
+	imgUser.width="32";
+	imgUser.height="32";
+	imgUser.classList.add("rounded-circle");
+	divParent.appendChild(imgUser);
+	const divDetailCmt=document.createElement("div");
+	divDetailCmt.classList.add("detail-comment");
+	const h6nameUser=document.createElement("h6");
+	h6nameUser.textContent=result[0];
+	const pContent=document.createElement("p");
+	pContent.textContent=result[2];
+	divDetailCmt.appendChild(h6nameUser);
+	divDetailCmt.appendChild(pContent);
+	divParent.appendChild(divDetailCmt);
+	const divActionCmt=document.createElement("div");
+	divActionCmt.classList.add("title-actioncomment");
+	divActionCmt.classList.add("d-flex");
+	divActionCmt.classList.add("flex-row");
+	const pTime=document.createElement("a");
+	const pLike=document.createElement("a");
+	const pCmt=document.createElement("a");
+	pTime.style.cursor="pointer";
+	pTime.textContent=result[3];
+	pLike.style.cursor="pointer";
+	pLike.textContent="Yêu thích";
+	pCmt.style.cursor="pointer";
+	pCmt.textContent="Trả lời";
+	pCmt.classList.add("actionResult");
+	if(result[4]!= null){
+		pCmt.id='actionResult'+result[4];
+	}
+	pCmt.setAttribute("postId",postId);
+	divActionCmt.appendChild(pTime);
+	divActionCmt.appendChild(pLike);
+	divActionCmt.appendChild(pCmt);
+	const divCmt=document.createElement("div");
+	if(result[4]!= null){
+		divCmt.id='cmt'+result[4];
+	}
+	divCmt.appendChild(divParent);
+	divCmt.appendChild(divActionCmt);
+	divlistCmt.appendChild(divCmt);
+	pCmt.addEventListener("click",createFormResultCmt);
+}
+
+
+function createFormResultCmt(event){
+	console.log(event.target);
+	const d = new Date();
+	let now = d.getTime();
+	const divParentCmt=document.getElementById(event.target.id);
+	const userAvatar=document.getElementById("userAvatar");
+	const userName=document.getElementById("userName");
+	const divResultCmt=document.createElement("div");
+	divResultCmt.classList.add("d-flex"); 
+	divResultCmt.classList.add("flex-row");
+	divResultCmt.style.marginLeft="-170px";
+	const imgUser=document.createElement("img");
+	imgUser.src=userAvatar.value;
+	imgUser.width="32";
+	imgUser.height="32";
+	imgUser.classList.add("rounded-circle");
+	
+	const divDetailCmt=document.createElement("div");
+	divDetailCmt.classList.add("detail-comment");
+	const h6nameUser=document.createElement("h6");
+	h6nameUser.textContent=userName.value;
+	const divContaintInputAndI=document.createElement("div");
+	divContaintInputAndI.classList.add("d-flex");
+	const inputContent=document.createElement("input");
+	inputContent.type="text";
+	//inputContent.style.width="500px";
+	inputContent.classList.add("form-control");
+	inputContent.id="input"+now;
+	divDetailCmt.appendChild(h6nameUser);
+	divContaintInputAndI.appendChild(inputContent);
+	const isent=document.createElement("i");
+	isent.classList.add("bi");
+	isent.classList.add("bi-send");
+	isent.classList.add("i-send");
+	divContaintInputAndI.appendChild(isent);
+	divDetailCmt.appendChild(divContaintInputAndI);
+	divResultCmt.appendChild(imgUser);
+	divResultCmt.appendChild(divDetailCmt);
+	divParentCmt.appendChild(divResultCmt);
+	isent.id=now;
+	var parentIdCmt=event.target.id;
+	parentIdCmt=parentIdCmt.substring(12);divParentCmt
+	isent.setAttribute('postId',divParentCmt.getAttribute("postId"));
+	isent.setAttribute('parentCmtId',parentIdCmt);
+	isent.addEventListener("click",comment2)
+	inputContent.focus();
+	
+}
+	
     
    
     function showListMessages(){
@@ -92,7 +333,6 @@ var listImage=[];
         const aChatIcon=document.getElementById("li-chat");
         const divListMessages=document.getElementById("div-listmessages");
         const eleDisplay=divListMessages.style.display;
-        console.log(divListMessages.getAttribute("display"));
         var firstClick=1;
         if(firstClick==1){
             divListMessages.style.display="block"; 
@@ -296,7 +536,7 @@ function openOrCloseTagFriend(){
 function clickPostStatus(){
 	var formData=new FormData();
 	const inputContent=document.getElementById("inputStatus");
-	const inputUserId=document.getElementById("userid");
+	const inputUserId=document.getElementById("userId");
 	const selectScope=document.getElementById("select-scope");
 	formData.append("userId",inputUserId.value);
 	if(listImage.length!=0){
@@ -308,7 +548,7 @@ function clickPostStatus(){
 	}else{
 		formData.append("postImages",null);
 	}
-	console.table(listImage);
+	//console.table(listImage);
 	inputContent.value!="" ? formData.append("content",inputContent.value) : formData.append("content","");
 	backgroundId!=undefined ? formData.append("backgroundId",backgroundId) : formData.append("backgroundId","");
 	emoteId!=undefined ? formData.append("emoteId",emoteId) : formData.append("emoteId","");

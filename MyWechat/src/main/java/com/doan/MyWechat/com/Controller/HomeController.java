@@ -20,7 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doan.MyWechat.com.Common.COMMON;
+import com.doan.MyWechat.com.Entities.Comment;
 import com.doan.MyWechat.com.Entities.Post;
+import com.doan.MyWechat.com.Services.CommentService;
 import com.doan.MyWechat.com.Services.LikeService;
 import com.doan.MyWechat.com.Services.PostService;
 
@@ -32,6 +34,8 @@ public class HomeController {
 	PostService postService;
 	@Autowired
 	LikeService likeService;
+	@Autowired
+	CommentService commentService;
 	@RequestMapping(value ="/home")
 	public String index(Model model) {
 		List<Map<String,String>> listPosts= postService.getListPost(LoginController.idUserLogin);
@@ -60,8 +64,54 @@ public class HomeController {
 			return ResponseEntity.ok("userloginlike");
 		}
 		return ResponseEntity.ok("userlogindontlike");
+
+	}
+	
+	@PostMapping(value ="/createcomment")
+	public ResponseEntity<Object[]> createComment(@RequestParam String postId,@RequestParam String userId,@RequestParam String content) {  
+		List<Map<String, String>> detailComment =commentService.createComment(postId,userId,content);
+		Object [] arrObj = null;
+		for (Object object : detailComment) {
+			arrObj=(Object[]) object;
+			break;
+		}
+		if (arrObj != null) {
+			return ResponseEntity.ok(arrObj);
+		}
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+
+	}
+	
+	@PostMapping(value ="/createcomment2")
+	public ResponseEntity<Object[]> createComment2(@RequestParam String cmtId,@RequestParam String postId,@RequestParam String userId,@RequestParam String content) {  
+		List<Map<String, String>> detailComment =commentService.createComment2(cmtId,postId,userId,content);
+		Object [] arrObj = null;
+		for (Object object : detailComment) {
+			arrObj=(Object[]) object;
+			break;
+		}
+		if (arrObj != null) {
+			return ResponseEntity.ok(arrObj);
+		}
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+
+	}
+	
+	@PostMapping(value ="/getlistcomment")
+	public ResponseEntity<List<Object[]>> getListComment(Model model,@RequestParam String postId,@RequestParam String filterType) {
+		List<Map<String, String>> listComments =commentService.getListComment(postId,filterType);
+		if(listComments==null) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}else {
+			List<Object[]> listCmtsReturn= new ArrayList<>();
+			for (Object object : listComments) {
+				Object[] arrObj=(Object[]) object;
+				listCmtsReturn.add(arrObj);
+			}
+			return ResponseEntity.ok(listCmtsReturn);
+		}
 		
-		
+
 	}
 
 	

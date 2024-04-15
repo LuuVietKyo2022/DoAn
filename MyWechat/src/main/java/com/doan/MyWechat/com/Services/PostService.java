@@ -66,15 +66,14 @@ public class PostService {
 				+ "tbl_post.created_at AS created_at,\r\n"
 				+ "tbl_post.scope AS scope,\r\n"
 				+ "tbl_post.id AS post_id,\r\n"
-				+ "(SELECT COUNT(*) FROM likes AS tbl_likes WHERE tbl_likes.post_id=tbl_post.id AND tbl_likes.is_like='1') AS count_like,\r\n"
-				+ "(SELECT COUNT(*) FROM likes AS tbl_likes WHERE tbl_likes.post_id=tbl_post.id AND tbl_likes.user_id='"+idUserLogin+"' AND tbl_likes.is_like='1') AS user_login_like,\r\n"
-				+ "(SELECT COUNT(*) FROM comments AS tbl_cmts WHERE tbl_cmts.post_id=tbl_post.id AND tbl_cmts.delete_flg IS NULL OR tbl_cmts.delete_flg=0) AS count_cmt\r\n"
+				+ "(SELECT COUNT(*) FROM likes AS tbl_likes WHERE tbl_likes.post_id=tbl_post.id AND tbl_likes.cmt_id IS NULL  AND tbl_likes.is_like='1') AS count_like,\r\n"
+				+ "(SELECT COUNT(*) FROM likes AS tbl_likes WHERE tbl_likes.post_id=tbl_post.id AND tbl_likes.user_id='1' AND tbl_likes.cmt_id IS NULL AND tbl_likes.is_like='1') AS user_login_like,\r\n"
+				+ "(SELECT COUNT(*) FROM comments AS tbl_cmts WHERE tbl_cmts.post_id=tbl_post.id AND tbl_cmts.delete_flg IS NULL OR tbl_cmts.delete_flg=0  AND tbl_cmts.parent_comment_id IS NULL) AS count_cmt\r\n"
 				+ "FROM Posts AS tbl_post\r\n"
 				+ "INNER JOIN  users AS tbl_user\r\n"
 				+ "ON tbl_post.user_id=tbl_user.id\r\n"
-				+ "ORDER BY tbl_post.created_at DESC \r\n"
-				+ "";
-		//System.out.println(sql);
+				+ "ORDER BY tbl_post.created_at DESC ";
+		System.out.println(sql);
 		List<Map<String,String>> listPosts=entityManager.createNativeQuery(sql).getResultList();
 		for (Object object : listPosts) {
 			Object[] objArr = (Object[]) object;

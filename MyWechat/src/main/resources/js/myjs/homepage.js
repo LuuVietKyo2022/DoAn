@@ -141,13 +141,51 @@ var listImage=[];
 			contentType:false,
 			success:function(listArray){
 				console.log(listArray);
-				for(let i = 0; i < listArray.length; i++){
-					createFormCmt(postId,listArray[i]);
+
+				var arrayParentCmt=[];
+				var arrayChildCmt=[];
+				//Init list parenCmt and list childcmt
+				for(var i=0; i<listArray.length;i++){
+					if(listArray[i][6] == null){
+						arrayParentCmt.push(listArray[i]);
+						createFormCmt(postId,listArray[i]);
+					}else{
+						arrayChildCmt.push(listArray[i]);
+					}
 				}
+				if(arrayChildCmt.length!=0){
+					insertChildCmt(postId,arrayParentCmt,arrayChildCmt);
+				}
+				
+				
+				
+				//for(let i = 0; i < listArray.length; i++){
+				//	createFormCmt(postId,listArray[i]);
+				//}
 			},error:function(result){
 				console.log(result);
 			}
 		})
+	}
+	function insertChildCmt(postId,arrayParentCmt,arrayChildCmt){
+		var arrayParentCmtNew=[];
+		var arrayChildCmtNew=[];
+		for(var i=0; i<arrayParentCmt.length;i++){
+			for(var j=0;j<arrayChildCmt.length;j++){
+				if(arrayParentCmt[i][4]==arrayChildCmt[j][6]){
+					arrayParentCmtNew.push(arrayChildCmt[j]);
+					createFormCmt2(arrayChildCmt[j][6],arrayChildCmt[j],postId);
+					arrayChildCmt.splice(j,1);
+				}
+			}
+		}
+		if(arrayChildCmt.length!=0){
+			for(var j=0;j<arrayChildCmt.length;j++){
+				arrayChildCmtNew.push(arrayChildCmt[j]);
+			}
+			insertChildCmt(postId,arrayParentCmtNew,arrayChildCmtNew);
+		}
+		
 	}
 	function comment(postId,inputCmtId){
 		const inputComment=document.getElementById(inputCmtId);
@@ -194,7 +232,6 @@ function comment2(event){
 				contentType:false,
 				success:function(result){
 					divActionResult.textContent="";
-					divActionResult.textContent="Trả lời";
 					createFormCmt2(parentCmtId,result,postId);
 				},
 				error:function(result){
@@ -274,7 +311,7 @@ function createFormCmt2(parentCmtId,result,postId){
 	divCmt.appendChild(divParent);
 	divCmt.appendChild(divActionCmt);
 	divParentCmt.appendChild(divCmt);
-	pCmt.addEventListener("click",createFormResultCmt);
+	//pCmt.addEventListener("click",createFormResultCmt);
 }
 function createFormCmt(postId,result){
 	const divlistCmt=document.getElementById("list-cmt"+postId);

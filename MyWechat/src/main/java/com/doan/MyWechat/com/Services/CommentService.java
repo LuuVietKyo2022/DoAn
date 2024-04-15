@@ -93,12 +93,13 @@ public class CommentService {
 					+ "tbl_cmt.content AS content,\r\n"
 					+ "tbl_cmt.created_at AS createdAt, \r\n"
 					+ "tbl_cmt.id AS id, \r\n"
-					+ "(SELECT COUNT(*) FROM likes AS tbl_like WHERE  tbl_like.cmt_id=tbl_cmt.id) AS countLikeCmt\r\n"
+					+ "(SELECT COUNT(*) FROM likes AS tbl_like WHERE  tbl_like.cmt_id=tbl_cmt.id) AS countLikeCmt, \r\n"
+					+ "tbl_cmt.parent_comment_id AS parent_cmt_id \r\n"
 					+ "FROM comments AS tbl_cmt\r\n"
 					+ "INNER JOIN users AS tbl_user ON tbl_cmt.user_id=tbl_user.id\r\n"
 					+ "WHERE tbl_cmt.post_id="+postId+"\r\n"
 					+ "ORDER BY tbl_cmt.created_at DESC";
-		System.out.println(sql);
+		//System.out.println(sql);
 		List<Map<String, String>> listCmts=entityManager.createNativeQuery(sql).getResultList();
 			for (Object obj : listCmts) {
 				Object[] arrObj= (Object[]) obj;
@@ -118,7 +119,8 @@ public class CommentService {
 					+ "tbl_cmt.content AS content,\r\n"
 					+ "tbl_cmt.created_at AS createdAt, \r\n"
 					+ "tbl_cmt.id AS id, \r\n"
-					+ "(SELECT COUNT(*) FROM likes AS tbl_like WHERE  tbl_like.cmt_id=tbl_cmt.id) AS countLikeCmt\r\n"
+					+ "(SELECT COUNT(*) FROM likes AS tbl_like WHERE  tbl_like.cmt_id=tbl_cmt.id) AS countLikeCmt,\r\n"
+					+ "tbl_cmt.parent_comment_id AS parent_cmt_id \r\n"
 					+ "FROM comments AS tbl_cmt\r\n"
 					+ "INNER JOIN users AS tbl_user ON tbl_cmt.user_id=tbl_user.id\r\n"
 					+ "WHERE tbl_cmt.post_id="+postId;

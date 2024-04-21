@@ -73,7 +73,7 @@ public class PostService {
 				+ "INNER JOIN  users AS tbl_user\r\n"
 				+ "ON tbl_post.user_id=tbl_user.id\r\n"
 				+ "ORDER BY tbl_post.created_at DESC ";
-		System.out.println(sql);
+		//System.out.println(sql);
 		List<Map<String,String>> listPosts=entityManager.createNativeQuery(sql).getResultList();
 		for (Object object : listPosts) {
 			Object[] objArr = (Object[]) object;

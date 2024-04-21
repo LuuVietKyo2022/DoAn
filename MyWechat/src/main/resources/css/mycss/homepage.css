@@ -84,6 +84,10 @@ body{
 width: 120px;
 height: 80px;
 }
+.iSearch{
+	font-size: 24px;
+}
+
 .list-card{
     width: 75%;
     position: absolute;

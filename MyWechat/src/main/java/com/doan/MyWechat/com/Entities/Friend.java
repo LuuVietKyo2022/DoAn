@@ -1,6 +1,7 @@
 package com.doan.MyWechat.com.Entities;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ public class Friend {
 	private String status;
 	
 	@Column(name="created_at")
-	private Date createdAt;
+	private Timestamp createdAt;
 
 	public int getId() {
 		return id;
@@ -61,15 +62,15 @@ public class Friend {
 		this.status = status;
 	}
 
-	public Date getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Friend(int id, int userId, int friendId, String status, Date createdAt) {
+	public Friend(int id, int userId, int friendId, String status, Timestamp createdAt) {
 		
 		this.id = id;
 		this.userId = userId;

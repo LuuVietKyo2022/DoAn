@@ -39,7 +39,7 @@
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/home" class="nav-link px-2 "><i class="bi bi-house-heart icons-header  "></i></a>
             </li>
-            <li><a href="#" class="nav-link px-2 "><i class="bi bi-people  icons-header "></i></a></li>
+            <li><a href="/friend" class="nav-link px-2 "><i class="bi bi-people  icons-header "></i></a></li>
             <li><a href="#" class="nav-link px-2 "><i class="bi bi-chat icons-header  "></i></a></li>
             <li><a href="#" class="nav-link px-2 "><i class="bi bi-play-btn icons-header  "></i></a></li>
             <li><a href="#" class="nav-link px-2 "><i class="bi bi-bell icons-header "></i></a></li>
@@ -74,14 +74,14 @@
 
         <div class="basic-info d-flex flex-row">
             <div class="user-avatar">
-                <img src="https://github.com/mdo.png" alt="mdo" width="168" height="168" class="rounded-circle">
+                <img src="${user.avatar}" alt="mdo" width="168" height="168" class="rounded-circle">
                 <button type="button" class="btn btn-change-avatar btn-light" fdprocessedid="3d0eao">
                     <i class="bi bi-camera"></i>
 
                 </button>
             </div>
             <div class="user-name">
-                <h1 style="color: black; font-weight: bold;">Lưu Việt</h1>
+                <h1 style="color: black; font-weight: bold;">${user.username}</h1>
                 <a href="#" class="text-decoration-none text-body-secondary">10K người theo dõi </a>
             </div>
             <button type="button" class="btn btn-changeprofile btn-primary" fdprocessedid="vxfg0d">
@@ -129,7 +129,7 @@
                         <div class="d-flex flex-row gap-2 w-100 justify-content-between">
                             <p class="mb-0">Đến từ</p>
                             <a href="#" class="mb-0 text-decoration-none opacity-75">
-                                <h6 class="h6-subinfo" style="color: black;">Bắc Giang</h6>
+                                <h6 class="h6-subinfo" style="color: black;">${user.address1}</h6>
                             </a>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                         <div class="d-flex flex-row gap-2 w-100 justify-content-between">
                             <p class="mb-0">Sống tại</p>
                             <a href="#" class="mb-0 text-decoration-none opacity-75">
-                                <h6 class="h6-subinfo" style="color: black;">Hà Nội</h6>
+                                <h6 class="h6-subinfo" style="color: black;">${user.address2}</h6>
                             </a>
                         </div>
                     </div>

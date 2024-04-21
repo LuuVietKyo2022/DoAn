@@ -37,7 +37,7 @@
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/home" class="nav-link px-2 "><i
                             class="bi bi-house-heart icons-header  "></i></a></li>
-                <li><a href="#" class="nav-link px-2 "><i class="bi bi-people  icons-header "></i></a></li>
+                <li><a href="/friend" class="nav-link px-2 "><i class="bi bi-people  icons-header "></i></a></li>
                 <li id="li-chat" onclick="showListMessages()"><a href="#" class="nav-link px-2 "><i class="bi bi-chat icons-header  "></i></a></li>
                 <li><a href=""   class="nav-link px-2 "><i class="bi bi-play-btn icons-header  "></i></a></li>
                 <li><a href="#" class="nav-link px-2 "><i class="bi bi-bell icons-header "></i></a></li>
@@ -57,15 +57,15 @@
                     <input type="search" class="form-control " placeholder="Tìm..." aria-label="Search">
                 </form>
                 <div class="dropdown text-end">
-                    <a href="/personal" class="d-block link-body-emphasis text-decoration-none ">
-                        <img src="${user.avatar}"  alt="mdo" wid="32" height="32" class="rounded-circle">
+                    <a class="d-block link-body-emphasis text-decoration-none" >
+                       <i class="bi iSearch bi-search"></i>
                     </a>
                 </div>
             </div>
             <ul class="nav ul-leftnavi ul-margin nav-pills flex-column ">
 
                 <li>
-                    <a href="#" class="nav-link link-body-emphasis a-flex">
+                    <a href="/friend" class="nav-link link-body-emphasis a-flex">
                         <i class="bi  icon-nav bi-person"></i>
                         <p class="p-functionnav">Bạn bè</p>
                     </a>
@@ -273,7 +273,7 @@
         <div class="list-card">
             <div class="card card-status d-flex flex-row">
                 <div class=" d-flex flex-row card-body card-body-avatar">
-                    <a href="/home">
+                    <a href="/personal">
                         <img src="/images/${user.avatar}" alt="mdo" wid="40" height="40"
                             class="img-miniavatar rounded-circle">
                     </a>

@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +22,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.doan.MyWechat.com.Common.COMMON;
+import com.doan.MyWechat.com.Common.UserStatus;
 import com.doan.MyWechat.com.Controller.LoginController;
 import com.doan.MyWechat.com.Entities.User;
 import com.doan.MyWechat.com.Repositories.UserRepository;
 import com.doan.MyWechat.com.untils.Until;
+
+import lombok.experimental.var;
 
 @Service
 public class UserService {
@@ -111,6 +114,24 @@ public class UserService {
 			
 		}
 	
+	}
+	
+	public void saveUser(User user) {
+		user.setStatus(UserStatus.ONLINE.getValue());
+		userRepo.save(user);
+	}
+	
+	public void disconnect(User user) {
+		Optional<User> storedUser=userRepo.findById(user.getId());
+		if(storedUser!=null) {
+			User userInDb=userRepo.findObjectById(user.getId());
+			userInDb.setStatus(UserStatus.OFFLINE.getValue());
+			userRepo.save(userInDb);
+		}
+	}
+	
+	public List<User> findConnectUsers(){
+		return userRepo.findAllByStatus(UserStatus.ONLINE.getValue());
 	}
 
 }

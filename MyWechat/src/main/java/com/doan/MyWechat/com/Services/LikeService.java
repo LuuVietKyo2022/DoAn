@@ -14,21 +14,20 @@ public class LikeService {
 	LikeRepository likeRepo;
 	
 	public int likePost(String postId, String userId, String isLike) {
-		int countUserLikeThisPost=likeRepo.findCountByPostIdAndUserIdAndIsLike(Integer.parseInt(postId), Integer.parseInt(userId));
-		if(countUserLikeThisPost==0) {
+		int countlikeInDb=likeRepo.findCountByPostIdAndUserIdAndCmtId(Integer.parseInt(postId), Integer.parseInt(userId),0);
+		if(countlikeInDb==0) {
 			Like newLike = new Like();
 			newLike.setPostId(Integer.parseInt(postId));
 			newLike.setUserId(Integer.parseInt(userId));
 			newLike.setIsLike(Integer.parseInt(isLike));
 			newLike.setCreatedAt(Until.getDateTimeNow());
 			likeRepo.save(newLike);
-		}else {
-			Like likeInDb=likeRepo.findLikeByPostIdAndUserId(Integer.parseInt(postId), Integer.parseInt(userId));
-			likeInDb.setIsLike(Integer.parseInt(isLike));
-			likeRepo.save(likeInDb);
 			
+		}else {
+			Like likeInDb=likeRepo.findLikeByPostIdAndUserIdAndCmtId(Integer.parseInt(postId), Integer.parseInt(userId),0);
+			likeInDb.setIsLike(Integer.parseInt(isLike));
 		}
-		return likeRepo.findCountByPostIdAndUserIdAndIsLike(Integer.parseInt(postId), Integer.parseInt(userId));
+		return Integer.parseInt(isLike);
 		
 	}
 

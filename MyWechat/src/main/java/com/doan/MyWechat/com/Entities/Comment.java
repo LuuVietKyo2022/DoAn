@@ -10,6 +10,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "Comments")
 public class Comment {
@@ -35,79 +46,7 @@ public class Comment {
 	@Column(name = "updated_at")
 	private Timestamp updatedAt;
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getPostId() {
-		return postId;
-	}
-
-	public void setPostId(int postId) {
-		this.postId = postId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public int getParentCommentId() {
-		return parentCommentId;
-	}
-
-	public void setParentCommentId(int parentCommentId) {
-		this.parentCommentId = parentCommentId;
-	}
-
-	public Timestamp getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Timestamp createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Timestamp getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Timestamp updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public Comment(int id, int postId, int userId, String content, int parentCommentId, Timestamp createdAt,
-			Timestamp updatedAt) {
-		super();
-		this.id = id;
-		this.postId = postId;
-		this.userId = userId;
-		this.content = content;
-		this.parentCommentId = parentCommentId;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
-
-	public Comment() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	
 	
 }

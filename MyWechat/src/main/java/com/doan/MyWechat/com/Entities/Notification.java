@@ -9,6 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "Notifications")
 public class Notification {
@@ -32,67 +43,6 @@ public class Notification {
 	@Column(name="created_at")
 	private Date createdAt;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public int getTypeId() {
-		return typeId;
-	}
-
-	public void setTypeId(int typeId) {
-		this.typeId = typeId;
-	}
-
-	public boolean isReadFlg() {
-		return readFlg;
-	}
-
-	public void setReadFlg(boolean readFlg) {
-		this.readFlg = readFlg;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Notification(int id, int userId, String type, int typeId, boolean readFlg, Date createdAt) {
-		
-		this.id = id;
-		this.userId = userId;
-		this.type = type;
-		this.typeId = typeId;
-		this.readFlg = readFlg;
-		this.createdAt = createdAt;
-	}
-
-	public Notification() {
-		
-	}
 	
 	
 }

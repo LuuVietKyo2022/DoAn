@@ -10,6 +10,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "Likes")
 public class Like {
@@ -32,71 +43,6 @@ public class Like {
 	@Column(name="is_like")
 	private int isLike;
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getPostId() {
-		return postId;
-	}
-
-	public void setPostId(int postId) {
-		this.postId = postId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public int getCmtId() {
-		return cmtId;
-	}
-
-	public void setCmtId(int cmtId) {
-		this.cmtId = cmtId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public Timestamp getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Timestamp createdAt) {
-		this.createdAt = createdAt;
-	}
-	
-
-
-	public int getIsLike() {
-		return isLike;
-	}
-
-	public void setIsLike(int isLike) {
-		this.isLike = isLike;
-	}
-
-	
-
-	public Like(int id, int postId, int userId, int cmtId, Timestamp createdAt, int isLike) {
-		super();
-		this.id = id;
-		this.postId = postId;
-		this.userId = userId;
-		this.cmtId = cmtId;
-		this.createdAt = createdAt;
-		this.isLike = isLike;
-	}
-
-	public Like() {
-	
-	}
 	
 	
 }

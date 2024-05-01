@@ -1,8 +1,5 @@
 package com.doan.MyWechat.com.Entities;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,27 +19,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "Friends")
-public class Friend {
-
+@Table(name="chatrooms")
+public class Chatroom {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="user_id")
-	private int userId;
-	
-	@Column(name="friend_id")
-	private int friendId;
-	
-	@Column(length = 50)
-	private String status;
-	
-	@Column(name="created_at")
-	private Timestamp createdAt;
-
+	@Column(name="chat_id")
+	private String chatId;
+	@Column(name="sender_id")
+	private int senderId;
+	@Column(name="recipient_id")
+	private int recipientId;
 
 	
-	
-	
+
 }

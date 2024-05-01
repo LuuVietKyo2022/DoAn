@@ -22,27 +22,28 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "Friends")
-public class Friend {
+@Table(name = "chatmessages")
+public class ChatMessage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="user_id")
-	private int userId;
+	@Column(name="sender_id")
+	private int senderId;
 	
-	@Column(name="friend_id")
-	private int friendId;
+	@Column(name="recipient_id")
+	private int recipientId;
 	
-	@Column(length = 50)
-	private String status;
+	@Column(name = "chat_id")
+	private String chatId;
+	
+	@Column(length = 2000)
+	private String content;
 	
 	@Column(name="created_at")
 	private Timestamp createdAt;
 
 
-	
-	
 	
 }

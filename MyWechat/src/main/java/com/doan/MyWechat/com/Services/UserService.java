@@ -63,11 +63,9 @@ public class UserService {
 		
 	}
 	
-	public COMMON reigisterInforUser(int id, String lastname, String firstname, String username, String gender,
+	public COMMON reigisterInforUser(int id, String username, String gender,
 			String birthday, String address, String address2, MultipartFile avatar) {
 		User userInDB=userRepo.findObjectById(id);
-		userInDB.setFirstName(firstname);
-		userInDB.setLastName(lastname);
 		userInDB.setUsername(username);
 		userInDB.setGender(gender);
 		userInDB.setAddress1(address);

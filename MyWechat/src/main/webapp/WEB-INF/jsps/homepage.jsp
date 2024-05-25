@@ -288,10 +288,10 @@
 			<c:forEach var="post" items="${listPost}"> 
             <div class="card">
                 <div class="d-flex flex-row">
-                    <img src="${post[1]}" alt="mdo" wid="40" height="40"
-                        class=" img-normal  rounded-circle">
+                    <a class="text-decoration-none" style="color:black" href="/another/${post[12]}" ><img  src="${post[1]}" alt="mdo" wid="40" height="40"
+                        class=" img-normal  rounded-circle"> </a>
                     <div class="d-flex flex-column">
-                        <h5 class="card-title d-flex">${post[0]}
+                        <h5 class="card-title d-flex"><a class="text-decoration-none" href="/another/${post[12]}" style="color:black" >${post[0]}</a>
 						<c:if test="${!empty post[4]}">
 							${post[4]}
 						</c:if>

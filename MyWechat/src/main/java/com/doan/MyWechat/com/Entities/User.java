@@ -43,11 +43,6 @@ public class User {
 	@Column(name="cover_photo") 
 	private String coverPhoto; 
 
-	@Column(name="first_name")  
-	private String firstName; 
-	
-	@Column(name="last_name") 
-	private String lastName; 
 	
 	@Column(length = 10) 
 	private String gender; 

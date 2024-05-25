@@ -7,8 +7,6 @@ function ajaxPostForm(){
 	var btnLogin= document.getElementById('btn-login');
 	var formData = new FormData();
 	
-	formData.append('lastname', document.getElementById('lastname').value);
-    formData.append('firstname', document.getElementById('firstname').value);
     formData.append('username', document.getElementById('username').value);
     formData.append('gender', document.getElementById('gender').value);
     formData.append('birthday', document.getElementById('birthday').value);

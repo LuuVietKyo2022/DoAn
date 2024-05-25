@@ -29,23 +29,6 @@
 
         <form enctype="multipart/form-data" class="needs-validation" novalidate="">
             <div class="row g-3">
-                <div class="col-sm-6">
-                    <label for="lastName" class="form-label">Họ</label>
-                    <input type="text"  class="form-control" id="lastname" placeholder="" value="" required=""
-                        fdprocessedid="xj3wn">
-                    <div class="invalid-feedback">
-                        Valid last name is required.
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <label for="firstName" class="form-label">Tên</label>
-                    <input type="text"  class="form-control" id="firstname" placeholder="" value="" required=""
-                        fdprocessedid="62vt98">
-                    <div class="invalid-feedback">
-                        Valid first name is required.
-                    </div>
-                </div>
 
                 <div class="col-12">
                     <label for="username" class="form-label">Tên đăng nhập</label>

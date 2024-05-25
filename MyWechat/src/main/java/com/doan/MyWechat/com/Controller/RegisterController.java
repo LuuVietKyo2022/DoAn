@@ -59,8 +59,6 @@ public class RegisterController {
 	
 	@RequestMapping(value = "/addinfor/{id}",method = RequestMethod.POST)
 	public ResponseEntity<String> addInforUser(@PathVariable int id,
-			@RequestParam String lastname,
-			@RequestParam String firstname,
 			@RequestParam String username,
 			@RequestParam String gender,
 			@RequestParam String birthday,
@@ -71,7 +69,7 @@ public class RegisterController {
 		if(id!=idTemp) {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("error_forbidden");
 		}
-		COMMON status=userService.reigisterInforUser(id,lastname,firstname,username,gender,birthday,address,address2,avatar);
+		COMMON status=userService.reigisterInforUser(id,username,gender,birthday,address,address2,avatar);
 		if (status.equals(COMMON.ADDINFOR_STATUS_SUCCESS)) {
 			return ResponseEntity.ok("success");
 		}else return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error");

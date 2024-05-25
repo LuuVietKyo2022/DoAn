@@ -34,22 +34,22 @@
           action="/addinfor" modelAttribute="user">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" onkeyup="checkVaidateEmail()" class="form-control" id="exampleInputEmail" aria-describedby="email">
+            <input type="email" onkeyup="checkVaidateEmail()" autocomplete="off" class="form-control" id="exampleInputEmail" aria-describedby="email">
             <div id="" class="form-text">Không nên chia sẻ thông tin tài khoản</div>
         </div>
         <div class="mb-1">
             <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-            <input type="password" onkeyup="checkRepeatPassword()" class="form-control" id="exampleInputPassword1">
+            <input type="password" onkeyup="checkRepeatPassword()" autocomplete="off" class="form-control" id="exampleInputPassword1">
             <i id="btn-showpass" onclick="showOrHidePass()" class="bi bi-eye-slash-fill"></i>
         </div>
         <div class="div-last">
             <label for="exampleInputPassword2" class="form-label">Nhập lại Mật khẩu</label>
-            <input type="password" onkeyup="checkRepeatPassword()" class="form-control" id="exampleInputPassword2">
+            <input type="password" onkeyup="checkRepeatPassword()" autocomplete="off" class="form-control" id="exampleInputPassword2">
             <i id="btn-showpass2" onclick="showOrHidePass2()" class="bi bi-eye-slash-fill"></i>
         </div>
 		<p class="" id="text-error" style="color:red;display:none"><p>
 		<p class="" id="text-success" style="color:blue;display:none">Success<p>
-        <button type="button" id="btn-register" onclick="submitFormregister()" class="btn btn-primary">Đăng ký</button>
+        <button type="button" id="btn-register" onclick="submitFormregister()"  class="btn btn-primary">Đăng ký</button>
 		<a type="button" id="btn-addinfo" href="/addinfor/" onclick="clickButtonAddInfor()" style="display:none" class="btn btn-primary">Thêm thông tin</a>
         <p class="mt-5 mb-3 text-body-secondary" id="text-suggest">Bạn đã có tài khoản hãy <a href="/login">đăng nhập</a> nhé !</p>
     </form>

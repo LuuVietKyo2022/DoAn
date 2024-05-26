@@ -1,4 +1,6 @@
 var reason;
+var imageCoverPhoto;
+const reader=new FileReader();
 function clickHeart(){
     const btnLightHeart=document.getElementById("btn-heart");
     const iLightHeart=document.getElementById("i-lightheart");
@@ -108,6 +110,68 @@ function reportPost(){
 				
 			}
 		})
+}
+function changeCoverPhoto(){
+	const inputCoverPhoto=document.getElementById("inputCoverPhoto");
+	inputCoverPhoto.click();
+	
+	console.table(inputCoverPhoto);
+	inputCoverPhoto.addEventListener("change", function() {
+		if (inputCoverPhoto.files.length > 0) {
+    	const file = inputCoverPhoto.files[0];
+    	// Xử lý file được chọn (upload, hiển thị ảnh, ...)
+    	
+    	reader.readAsDataURL(file);
+    	reader.onload=function(){
+		console.table(reader);
+    	const previewImg=document.getElementById("previewImg");
+    	previewImg.src=reader.result;
+    	const card=document.getElementById("cardChangeAvatar");
+    	card.classList.remove("d-none");
+    	card.classList.add("d-block");
+    	imageCoverPhoto=file;
+		}
+    	
+    	}
+		})
+	}
+	
+function clickPostStatus(){
+	var formData=new FormData();
+	const inputContent=document.getElementById("inputStatus");
+	var userId=document.getElementById("userId").value;
+	const coverPhoto=document.getElementById("coverPhoto");
+	coverPhoto.src=reader.result;
+	coverPhoto.style.width="70%";
+	coverPhoto.style.height="405px";
+	formData.append("userId",userId);
+	formData.append("postImages",imageCoverPhoto);
+	//console.table(listImage);
+	inputContent.value!="" ? formData.append("content",inputContent.value) : formData.append("content","");
+	formData.append("backgroundId","");
+	formData.append("emoteId","emote21");
+	formData.append("scope",1);
+	//console.log(formData);
+	$.ajax({
+		type:"POST",
+		url:"/changecoverphoto",
+		data:formData,
+		processData:false,
+		contentType:false,
+		success:function(result){
+			// Cài đặt URL mới
+			window.location.href = "/home";
+
+			// Tải lại trang
+			window.location.reload();
+
+			
+		},
+		error:function(result){
+			console.table(result);
+		}
+	})
+	
 }
 
 

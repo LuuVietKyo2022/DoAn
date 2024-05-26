@@ -147,7 +147,7 @@
                             <div class="form-floating mb-3">
                                 <input type="text" style="height: 160px;" class="form-control rounded-3"
                                     id="inputStatus" placeholder="" fdprocessedid="h0hky">
-                                <label for="inputStatus">Bạn đang nghĩ gì ế ?</label>
+                                <label for="inputStatus">Bạn đang nghĩ gì thế ?</label>
                             </div>
 							<div id="div-showimage" class="show-image">
 							</div>
@@ -248,7 +248,7 @@
                                 </li>
 								-->
 								<li class="status-icons">
-                                    <img onclick="openSetBackgroundTemplate()" src="../images/icon-tab/Aa_square-2x.png">
+                                    <img onclick="openSetBackgroundTemplate()" id="i-templatebackground" src="../images/icon-tab/Aa_square-2x.png">
                                 </li>
 								<!--
 								<li class="status-icons">
@@ -334,11 +334,17 @@
                 <div class="card-footer">
                     <div class="d-flex flex-row">
 						<c:choose>
-							<c:when test="${post[10] lt 1}">
+							<c:when test="${post[10] lt 1 && post[9] gt 0 }">
 								<a class="a-footer-card d-flex" href="#"><i class="bi bi-heart-fill" style="color: red;"></i><p id="p-countlike${post[8]}">${post[9]}</p></a>
 							</c:when>
-							<c:when test="${post[10] == 1 }">
+							<c:when test="${post[10] == 1 && post[9] gt 1}">
 								<a class="a-footer-card d-flex" href="#"><i class="bi bi-heart-fill" style="color: red;"></i><p id="p-countlike${post[8]}">Bạn và ${post[9] - 1} người khác</p></a>
+							</c:when>
+							<c:when test="${post[10] == 1 && post[9] == 1 }">
+								<a class="a-footer-card d-flex" href="#"><i class="bi bi-heart-fill" style="color: red;"></i><p id="p-countlike${post[8]}">Bạn </p></a>
+							</c:when>
+							<c:when test="${post[9] == 0 }">
+								<a class="a-footer-card d-flex" href="#"><i class="bi bi-heart-fill" style="color: red;"></i><p id="p-countlike${post[8]}"></p></a>
 							</c:when>
                         </c:choose>
 						<c:choose>

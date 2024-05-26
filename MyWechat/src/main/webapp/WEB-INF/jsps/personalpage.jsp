@@ -13,7 +13,7 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel='stylesheet' type='text/css' media='screen' href='../css/mycss/personalpage.css'>
 
-    <script src="jquery-3.7.1.min.js"></script>
+    <script src="../js/jquery/jQuery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -56,9 +56,12 @@
         </div>
     </div>
     <div class="" style="background-color: #ffffff;">
-        <div class="div-background">
-            <img src="">
-            <button type="button" class="btn btn-change-background btn-light" fdprocessedid="jqqeqo">
+		
+		
+		
+         <div class="div-background">
+            <img src="${user.coverPhoto}" id="coverPhoto"  width="70%" height="405px">
+            <button onclick="changeCoverPhoto()" type="button" class="btn btn-change-background btn-light" fdprocessedid="jqqeqo">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi svg-camera bi-camera" viewBox="0 0 16 16">
                     <path
@@ -70,8 +73,11 @@
                 </svg>
                 Chỉnh sửa ảnh bìa
             </button>
+			<input type="file" id="inputCoverPhoto" class="d-none"> 
         </div>
-
+    	
+	
+		
         <div class="basic-info d-flex flex-row">
             <div class="user-avatar">
                 <img src="${user.avatar}" alt="mdo" width="168" height="168" class="rounded-circle">
@@ -170,92 +176,32 @@
         </div>
         <div class="right-navigation">
             <div class="list-card">
-                <div class="card">
+                <div class="card d-none" id="cardChangeAvatar">
                     <div class="d-flex flex-row">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40"
+                        <img src="${user.avatar}" alt="mdo" width="40" height="40"
                             class=" img-normal  rounded-circle">
                         <div class="d-flex flex-column">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text"><small class="text-body-secondary">3 mins ago</small></p>
+                            <h5 class="card-title d-flex" >${user.username} </h5>
+                            <p class="card-text"><small class="text-body-secondary"></small></p>
                         </div>
                     </div>
 
                     <div class="card-body">
-
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-
+                        <input type="text" id="inputStatus" class="form-control" placeholder="Nói gì về ảnh bìa này" >
                     </div>
-                    <img src="..." class="card-img-bottom" alt="...">
+                    <img src="..." id="previewImg" class="card-img-bottom" alt="...">
                     <div class="card-footer">
-                        <div class="d-flex flex-row">
-                            <a class="a-footer-card" href="#"><i class="bi bi-heart-fill" style="color: red;"></i>18</a>
-                            <a class="a-footer-card" href="#">26 Bình luận</a>
-                            <a class="a-footer-card" href="#">5 Chia sẻ</a>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" id="btn-heart" class="btn btn-footer-card btn-outline-secondary"
-                                onclick="clickHeart()" fdprocessedid="9g79xr">
-                                <i class="bi bi-heart" id="i-lightheart"> Yêu thích</i>
-                                <span class="visually-hidden">Button</span>
-                            </button>
-                            <button type="button" id="btn-create-comment"
-                                class="btn btn-footer-card btn-outline-secondary" fdprocessedid="ggkv13">
-                                <i class="bi bi-chat"> Bình luận</i>
-                                <span class="visually-hidden">Button</span>
-                                <div class="list-comments">
-
-                                </div>
-                            </button>
-
-                            <button type="button" class="btn btn-footer-card btn-outline-secondary"
-                                fdprocessedid="f8z0xn">
-                                <i class="bi bi-share"> Chia sẻ</i>
-                                <span class="visually-hidden">Button</span>
-                            </button>
-                        </div>
-                        <div class="list-comments">
-                            <div class="user-comment comment">
-                                <div class="d-flex flex-row">
-                                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
-                                        class="rounded-circle">
-                                    <div class="detail-comment">
-                                        <h6>Nguyễn Nam</h6>
-                                        <p class="card-text"><small class="text-body-secondary">3 mins ago</small>
-                                        </p>
-                                        <p>Ảnh rất đẹp !</p>
-                                    </div>
-
-                                </div>
-                                <div class="title-actioncomment d-flex flex-row">
-                                    <a href="#">
-                                        <p>3 phút</p>
-                                    </a>
-                                    <a href="#">
-                                        <p>Yêu thích</p>
-                                    </a>
-                                    <a href="#">
-                                        <p>Phản hồi</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="my-comment d-flex flex-row comment">
-                                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
-                                    class="rounded-circle">
-                                <input type="text" class="form-control" onchange="inputComment()"
-                                    onkeydown="inputComment()" placeholder="Viết bình luận..." id="my-inputcomment"
-                                    aria-describedby="basic-addon1">
-                                <a href="#">
-                                    <i id="i-send" class="bi  bi-send"></i>
-                                </a>
-                            </div>
-
+                        <button type="button" onclick="clickPostStatus()" class="btn btn-primary">Đăng</button>
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
+		<div class="d-none">
+				<input type="hidden" id="userId" value="${user.id}" />
+			
+		</div>
         <script src="../js/myjs/personalpage.js"></script>
 </body>
 

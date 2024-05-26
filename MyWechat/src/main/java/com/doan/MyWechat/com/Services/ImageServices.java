@@ -80,4 +80,22 @@ public class ImageServices {
 		return a;
 	}
 	
+	@Transactional
+	public User addNewCoverPhotoForUser(User a,MultipartFile image) throws IllegalStateException, IOException {
+		//kiểm tra có upload ảnh
+				if (!isEmptyUploadFile(image)) { 
+					
+					String fileName = getUniqueUploadFileName(image.getOriginalFilename());
+					
+					
+					String pathToAvatar = "E:/ProjectDoAn/DoAn/images/userImages/coverPhoto/" + fileName;
+
+					// lưu image vào đường dẫn trên
+					image.transferTo(new File(pathToAvatar));
+
+					a.setCoverPhoto("../images/userImages/coverPhoto/" + fileName);
+				}
+				return a;
+	}
+	
 }

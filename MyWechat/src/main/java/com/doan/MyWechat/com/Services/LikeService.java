@@ -15,6 +15,7 @@ public class LikeService {
 	
 	public int likePost(String postId, String userId, String isLike) {
 		int countlikeInDb=likeRepo.findCountByPostIdAndUserIdAndCmtId(Integer.parseInt(postId), Integer.parseInt(userId),0);
+		System.out.println(countlikeInDb);
 		if(countlikeInDb==0) {
 			Like newLike = new Like();
 			newLike.setPostId(Integer.parseInt(postId));

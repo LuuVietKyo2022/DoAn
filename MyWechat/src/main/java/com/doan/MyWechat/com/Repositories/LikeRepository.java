@@ -8,7 +8,7 @@ import com.doan.MyWechat.com.Entities.Like;
 public interface LikeRepository extends BaseRepository<Like, Integer>{
 	//@Query("SELECT COUNT(*) FROM Like e WHERE e.postId = ?1 AND e.userId= ?2")
 	  //int findCountByPostIdAndUserId(int postId,int userId);
-		@Query("SELECT COUNT(*) FROM Like e WHERE e.cmtId = ?1 AND e.userId= ?2 AND e.cmtId='0'")
+		@Query("SELECT COUNT(*) FROM Like e WHERE e.postId = ?1 AND e.userId= ?2 AND e.cmtId='0'")
 		int findCountByPostIdAndUserIdAndCmtId(int postId,int userId,int cmtId);
 		
 	  Like findLikeByPostIdAndUserIdAndCmtId(int postId,int userId,int cmtId);

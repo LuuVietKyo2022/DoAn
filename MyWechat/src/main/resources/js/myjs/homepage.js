@@ -53,7 +53,13 @@ var listImage=[];
 			success:function(result){
 				const pCountLike=document.getElementById('p-countlike'+idPost);
 				if(result=="userloginlike"){
-					pCountLike.textContent="Bạn và "+pCountLike.textContent+" người khác";
+					if(pCountLike.textContent.length>0){
+					pCountLike.textContent="Bạn và "+pCountLike.textContent+" người khác";	
+					}
+					else{
+						pCountLike.textContent="Bạn";
+					}
+					
 				}else{
 					var index=pCountLike.textContent.search(/\d+/);
 					pCountLike.textContent=pCountLike.textContent.charAt(index);
@@ -497,6 +503,8 @@ function createFormResultCmt(event){
     }
 
  	function focusImageInput(){
+		 const iTemplatebacground=document.getElementById("i-templatebackground");
+		 iTemplatebacground.style.pointerEvents="none";
 		 // Tạo element input type file
   		const inputFile = document.createElement("input");
   		inputFile.type = "file";

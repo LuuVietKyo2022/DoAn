@@ -80,11 +80,12 @@
 		
         <div class="basic-info d-flex flex-row">
             <div class="user-avatar">
-                <img src="${user.avatar}" alt="mdo" width="168" height="168" class="rounded-circle">
-                <button type="button" class="btn btn-change-avatar btn-light" fdprocessedid="3d0eao">
+                <img src="${user.avatar}" id="imgAvatar" alt="mdo" width="168" height="168" class="rounded-circle">
+                <button type="button" class="btn btn-change-avatar btn-light" onclick="changeAvatar()" fdprocessedid="3d0eao">
                     <i class="bi bi-camera"></i>
 
                 </button>
+				<input type="file" id="inputAvatar" class="d-none"> 
             </div>
             <div class="user-name">
                 <h1 style="color: black; font-weight: bold;">${user.username}</h1>
@@ -176,7 +177,7 @@
         </div>
         <div class="right-navigation">
             <div class="list-card">
-                <div class="card d-none" id="cardChangeAvatar">
+                <div class="card d-none" id="cardChangeCoverPhoto">
                     <div class="d-flex flex-row">
                         <img src="${user.avatar}" alt="mdo" width="40" height="40"
                             class=" img-normal  rounded-circle">
@@ -192,6 +193,26 @@
                     <img src="..." id="previewImg" class="card-img-bottom" alt="...">
                     <div class="card-footer">
                         <button type="button" onclick="clickPostStatus()" class="btn btn-primary">Đăng</button>
+                        </div>
+
+                    </div>
+                </div>
+				<div class="card d-none" id="cardChangeAvatar">
+                    <div class="d-flex flex-row">
+                        <img src="${user.avatar}"  alt="mdo" width="40" height="40"
+                            class=" img-normal  rounded-circle">
+                        <div class="d-flex flex-column">
+                            <h5 class="card-title d-flex" >${user.username} </h5>
+                            <p class="card-text"><small class="text-body-secondary"></small></p>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <input type="text" id="inputStatus" class="form-control" placeholder="Nói gì về ảnh đại diện này" >
+                    </div>
+                    <img src="..." id="previewImgAvatar" class="card-img-bottom" alt="...">
+                    <div class="card-footer">
+                        <button type="button" onclick="clickPostStatus2()" class="btn btn-primary">Đăng</button>
                         </div>
 
                     </div>

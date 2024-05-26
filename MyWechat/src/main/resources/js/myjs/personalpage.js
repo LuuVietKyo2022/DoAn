@@ -1,5 +1,6 @@
 var reason;
 var imageCoverPhoto;
+var imageCoverAvatar;
 const reader=new FileReader();
 function clickHeart(){
     const btnLightHeart=document.getElementById("btn-heart");
@@ -126,7 +127,7 @@ function changeCoverPhoto(){
 		console.table(reader);
     	const previewImg=document.getElementById("previewImg");
     	previewImg.src=reader.result;
-    	const card=document.getElementById("cardChangeAvatar");
+    	const card=document.getElementById("cardChangeCoverPhoto");
     	card.classList.remove("d-none");
     	card.classList.add("d-block");
     	imageCoverPhoto=file;
@@ -174,4 +175,66 @@ function clickPostStatus(){
 	
 }
 
+function changeAvatar(){
+	const inputAvatar=document.getElementById("inputAvatar");
+	inputAvatar.click();
+	
+	console.table(inputAvatar);
+	inputAvatar.addEventListener("change", function() {
+		if (inputAvatar.files.length > 0) {
+    	const file = inputAvatar.files[0];
+    	// Xử lý file được chọn (upload, hiển thị ảnh, ...)
+    	
+    	reader.readAsDataURL(file);
+    	reader.onload=function(){
+		console.table(reader);
+    	const previewImg=document.getElementById("previewImgAvatar");
+    	previewImg.src=reader.result;
+    	const card=document.getElementById("cardChangeAvatar");
+    	card.classList.remove("d-none");
+    	card.classList.add("d-block");
+    	imageCoverAvatar=file;
+		}
+    	
+    	}})
+	
+}
+
+function clickPostStatus2(){
+	var formData=new FormData();
+	const inputContent=document.getElementById("inputStatus");
+	var userId=document.getElementById("userId").value;
+	const avatar=document.getElementById("imgAvatar");
+	avatar.src=reader.result;
+	//coverPhoto.style.width="70%";
+	//coverPhoto.style.height="405px";
+	formData.append("userId",userId);
+	formData.append("postImages",imageCoverAvatar);
+	//console.table(listImage);
+	inputContent.value!="" ? formData.append("content",inputContent.value) : formData.append("content","");
+	formData.append("backgroundId","");
+	formData.append("emoteId","emote22");
+	formData.append("scope",1);
+	//console.log(formData);
+	$.ajax({
+		type:"POST",
+		url:"/changeavatar",
+		data:formData,
+		processData:false,
+		contentType:false,
+		success:function(result){
+			// Cài đặt URL mới
+			window.location.href = "/home";
+
+			// Tải lại trang
+			window.location.reload();
+
+			
+		},
+		error:function(result){
+			console.table(result);
+		}
+	})
+	
+}
 

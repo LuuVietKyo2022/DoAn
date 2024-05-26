@@ -98,4 +98,21 @@ public class ImageServices {
 				return a;
 	}
 	
+	@Transactional
+	public User addNewAvatarPhotoForUser(User a,MultipartFile image) throws IllegalStateException, IOException {
+		//kiểm tra có upload ảnh
+				if (!isEmptyUploadFile(image)) { 
+					
+					String fileName = getUniqueUploadFileName(image.getOriginalFilename());
+					
+					
+					String pathToAvatar = "E:/ProjectDoAn/DoAn/images/userImages/avatar/" + fileName;
+
+					// lưu image vào đường dẫn trên
+					image.transferTo(new File(pathToAvatar));
+
+					a.setAvatar("../images/userImages/avatar/" + fileName);
+				}
+				return a;
+	}
 }

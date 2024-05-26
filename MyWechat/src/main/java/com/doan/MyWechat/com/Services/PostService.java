@@ -97,6 +97,38 @@ public class PostService {
 		return COMMON.CREATE_POST_SUCESS;
 	}
 	
+	public COMMON changeAvatar(String userid, MultipartFile postImages, String content, String backgroundId,
+			String emoteId, int scope) {
+		//System.out.println(userid+"_"+postImages+" "+content+" "+backgroundId+" "+emoteId+" "+scope);
+		Post newPost = new Post();
+		newPost.setUserId(Integer.parseInt(userid));
+		newPost.setContent(content);
+		newPost.setPostBackground(backgroundId);
+		newPost.setPostEmote(emoteId);
+		newPost.setScope(scope);
+		newPost.setCreatedAt(Until.getDateTimeNow());
+		
+		try {
+			User userInDB=userRepo.findObjectById(Integer.parseInt(userid));
+			if(userInDB.getCoverPhoto()!=null) {
+				OldImage oldImg= new OldImage();
+				oldImg.setUserId(Integer.parseInt(userid));
+				oldImg.setLinkImage(userInDB.getAvatar());
+				oldImg.setType(1);
+				oldImg.setCreatedAt(Until.getDateTimeNow());
+				oldImgRepo.save(oldImg);
+			}
+			userRepo.save(imgServices.addNewAvatarPhotoForUser(userInDB, postImages));
+			newPost.setPostImages(userInDB.getAvatar());
+			postRepo.save(newPost);
+		} catch (IllegalStateException e) {
+			return COMMON.CREATE_POST_ERROR;
+		} catch (IOException e) {
+			return COMMON.CREATE_POST_ERROR;
+		}
+		return COMMON.CREATE_POST_SUCESS;
+	}
+	
 	public List<Map<String,String>> getListPost(int idUserLogin) {
 		String sql="SELECT \r\n"
 				+ "tbl_user.username AS username,\r\n"

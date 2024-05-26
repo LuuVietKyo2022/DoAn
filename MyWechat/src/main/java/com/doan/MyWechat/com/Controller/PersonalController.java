@@ -60,13 +60,29 @@ public class PersonalController {
 		return ResponseEntity.ok("report success");
 	}
 	@RequestMapping(value ="/changecoverphoto")
-	public ResponseEntity<String> creatStatus(HttpServletRequest request,@RequestParam String userId,
+	public ResponseEntity<String> changeCoverPhoto(HttpServletRequest request,@RequestParam String userId,
 			@RequestParam MultipartFile postImages,
 			@RequestParam String content,
 			@RequestParam String backgroundId,
 			@RequestParam String emoteId,
 			@RequestParam int scope) {  
 		postSer.changeCoverPhoto(userId, postImages, content, backgroundId, emoteId, scope);
+		User userInDB=userRepo.findObjectById(Integer.parseInt(userId));
+		HttpSession session = request.getSession();
+		session.setAttribute("user",userInDB);
+		
+		
+		return null;
+	}
+	
+	@RequestMapping(value ="/changeavatar")
+	public ResponseEntity<String> changeAvatar(HttpServletRequest request,@RequestParam String userId,
+			@RequestParam MultipartFile postImages,
+			@RequestParam String content,
+			@RequestParam String backgroundId,
+			@RequestParam String emoteId,
+			@RequestParam int scope) {  
+		postSer.changeAvatar(userId, postImages, content, backgroundId, emoteId, scope);
 		User userInDB=userRepo.findObjectById(Integer.parseInt(userId));
 		HttpSession session = request.getSession();
 		session.setAttribute("user",userInDB);

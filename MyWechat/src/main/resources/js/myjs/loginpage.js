@@ -55,6 +55,15 @@ function login(){
 				hrefOld=window.location.href;
 				hrefNew=hrefOld.substring(0, 21)+"/home";
 				window.location.href=hrefNew;
+			}else if(result=="admin login"){
+				hrefOld=window.location.href;
+				hrefNew=hrefOld.substring(0, 21)+"/admin";
+				window.location.href=hrefNew;
+			}
+			else if(result=="blockuser login"){
+				hrefOld=window.location.href;
+				hrefNew=hrefOld.substring(0, 21)+"/block";
+				window.location.href=hrefNew;
 			}
 		},
 		error:function(result){

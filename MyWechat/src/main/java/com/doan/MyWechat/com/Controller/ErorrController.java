@@ -14,4 +14,9 @@ public class ErorrController {
 	public String returnErorrPageForbidden() {
 		return "erorrpage";
 	}
+	
+	@GetMapping(value="/block")
+	public String blockUserLogin() {
+		return "blockpage";
+	}
 }

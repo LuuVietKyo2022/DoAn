@@ -24,7 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.doan.MyWechat.com.Common.COMMON;
 import com.doan.MyWechat.com.Common.UserStatus;
 import com.doan.MyWechat.com.Controller.LoginController;
+import com.doan.MyWechat.com.Entities.Role;
 import com.doan.MyWechat.com.Entities.User;
+import com.doan.MyWechat.com.Repositories.RoleRepository;
 import com.doan.MyWechat.com.Repositories.UserRepository;
 import com.doan.MyWechat.com.untils.Until;
 
@@ -35,6 +37,10 @@ public class UserService {
 	
 	@Autowired 
 	UserRepository userRepo; 
+	
+	@Autowired 
+	RoleRepository roleRepo;; 
+	
 	@Autowired 
 	ImageServices imgServices;
 	public COMMON reigisterAccount(String email, String password) {
@@ -90,7 +96,9 @@ public class UserService {
 		User userInDB =userRepo.findTopUserByEmail(email);
 		if(userInDB==null) {
 			return COMMON.LOGIN_BY_NEW_EMAIL;
-		}else {
+		}
+		
+		else {
 			try {
 				MessageDigest md=MessageDigest.getInstance("MD5");
 				md.update(password.getBytes());
@@ -100,7 +108,15 @@ public class UserService {
 					HttpSession session = request.getSession();
 					session.setAttribute("user", userInDB);
 					LoginController.idUserLogin=userInDB.getId();
-					return COMMON.LOGIN_SUCCESS;
+					Role role=roleRepo.findRoleByUserId(userInDB.getId());
+					if(role!=null) {
+						if(role.getRoleName().equals("admin")) {
+							return COMMON.LOGIN_BY_ROLE_ADMIN;
+						}else if(role.getRoleName().equals("blockuser")) {
+							return COMMON.LOGIN_BY_ROLE_BLOCK;
+						}
+					}
+					else return COMMON.LOGIN_SUCCESS;
 				}else {
 					return COMMON.LOGIN_ERROR_INVALID_PASSWORD;
 				}
@@ -111,6 +127,7 @@ public class UserService {
 			}
 			
 		}
+		return null;
 	
 	}
 	
